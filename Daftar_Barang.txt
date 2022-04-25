@@ -1,0 +1,6 @@
+Topi,25000
+Baju,50000
+Masker,5000
+Sepatu,100000
+Jaket,250000
+Kacamata,30000
