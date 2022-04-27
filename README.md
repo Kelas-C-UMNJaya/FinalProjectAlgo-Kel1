@@ -4,4 +4,4 @@
 - Christian Ivan Wibowo (00000058450)
 - Basilius Jethro (00000057833)
 - Jefer Setiawan (00000059297)
-- Areta Escalonia (00000057872)
+- Areta Escalonia Candra(00000057872)

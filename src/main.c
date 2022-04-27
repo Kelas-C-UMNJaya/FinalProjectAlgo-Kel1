@@ -1,3 +1,5 @@
+#include "merch.h"
+#include "system.h"
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,12 +11,6 @@
 // - Pesan barang/tiket
 // - Kembali ke menu utama
 
-void prompt() {
-  printf("\nTekan apa saja untuk melanjutkan...");
-  getchar();
-}
-
-// TODO menu tiketnya
 int menuTiket() {
   int tiketChoose;
   printf("==============================\n");
@@ -30,7 +26,6 @@ int menuTiket() {
   return tiketChoose;
 }
 
-// TODO menu VOD
 int menuVOD() {
   int vodChoose;
   printf("==============================\n");
@@ -46,23 +41,6 @@ int menuVOD() {
   return vodChoose;
 }
 
-// TODO menu merch
-int menuMerch() {
-  int merchChoose;
-  printf("==============================\n");
-  printf("|           Merch            |\n");
-  printf("==============================\n");
-  printf("1. Top Sale Bulan Ini\n"
-         "2. Daftar Barang\n"
-         "3. Pesan Barang\n"
-         "0. Kembali Ke Menu Utama\n"
-         "Pilihan: ");
-  scanf("%d", &merchChoose);
-  printf("\n");
-  return merchChoose;
-}
-
-// TODO menu utama
 int mainMenu() {
   int pilih;
   printf("==============================\n");
@@ -78,8 +56,6 @@ int mainMenu() {
   return pilih;
 }
 
-// Nanti ada 3 menu, ikutin dari flowchartnya
-
 int main() {
   bool keepGoing = true;
   while (keepGoing) {
@@ -91,7 +67,7 @@ int main() {
       menuVOD();
       break;
     case 3:
-      menuMerch();
+      merch();
       break;
     case 0:
       keepGoing = false;

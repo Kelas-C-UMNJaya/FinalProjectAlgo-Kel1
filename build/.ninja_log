@@ -1,0 +1,9 @@
+# ninja log v5
+0	535	1651077571422385900	CMakeFiles/ProjectAkhirAlgo-Group1.dir/src/main.c.o	bef29c62ba999546
+1	536	1651077571422385900	CMakeFiles/ProjectAkhirAlgo-Group1.dir/src/system.c.o	2fe640c91cac86f5
+0	548	1651077571462385900	CMakeFiles/ProjectAkhirAlgo-Group1.dir/src/merch.c.o	d8f066a22db4cb27
+548	894	1651077571822385900	ProjectAkhirAlgo-Group1	7a235dcfd7499481
+0	102	1651077633252385900	CMakeFiles/ProjectAkhirAlgo-Group1.dir/src/merch.c.o	d8f066a22db4cb27
+102	436	1651077633592385900	ProjectAkhirAlgo-Group1	7a235dcfd7499481
+1	83	1651077685562385900	CMakeFiles/ProjectAkhirAlgo-Group1.dir/src/merch.c.o	d8f066a22db4cb27
+83	303	1651077685782385900	ProjectAkhirAlgo-Group1	7a235dcfd7499481
