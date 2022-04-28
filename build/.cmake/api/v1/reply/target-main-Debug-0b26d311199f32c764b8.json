@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "ProjectAkhirAlgo-Group1"
+			"path" : "main"
 		}
 	],
 	"backtrace" : 1,
@@ -61,7 +61,7 @@
 			]
 		}
 	],
-	"id" : "ProjectAkhirAlgo-Group1::@6890427a1f51a3e7e1df",
+	"id" : "main::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -77,8 +77,8 @@
 		],
 		"language" : "C"
 	},
-	"name" : "ProjectAkhirAlgo-Group1",
-	"nameOnDisk" : "ProjectAkhirAlgo-Group1",
+	"name" : "main",
+	"nameOnDisk" : "main",
 	"paths" : 
 	{
 		"build" : ".",

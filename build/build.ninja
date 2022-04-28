@@ -41,58 +41,58 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = /home/itshiroto/coding/kuliah-git/Algo-Kelompok1/build/
 # =============================================================================
-# Object build statements for EXECUTABLE target ProjectAkhirAlgo-Group1
+# Object build statements for EXECUTABLE target main
 
 
 #############################################
-# Order-only phony target for ProjectAkhirAlgo-Group1
+# Order-only phony target for main
 
-build cmake_object_order_depends_target_ProjectAkhirAlgo-Group1: phony || CMakeFiles/ProjectAkhirAlgo-Group1.dir
+build cmake_object_order_depends_target_main: phony || CMakeFiles/main.dir
 
-build CMakeFiles/ProjectAkhirAlgo-Group1.dir/src/main.c.o: C_COMPILER__ProjectAkhirAlgo-Group1_Debug /home/itshiroto/coding/kuliah-git/Algo-Kelompok1/src/main.c || cmake_object_order_depends_target_ProjectAkhirAlgo-Group1
-  DEP_FILE = CMakeFiles/ProjectAkhirAlgo-Group1.dir/src/main.c.o.d
+build CMakeFiles/main.dir/src/main.c.o: C_COMPILER__main_Debug /home/itshiroto/coding/kuliah-git/Algo-Kelompok1/src/main.c || cmake_object_order_depends_target_main
+  DEP_FILE = CMakeFiles/main.dir/src/main.c.o.d
   FLAGS = -g
   INCLUDES = -I/home/itshiroto/coding/kuliah-git/Algo-Kelompok1/includes
-  OBJECT_DIR = CMakeFiles/ProjectAkhirAlgo-Group1.dir
-  OBJECT_FILE_DIR = CMakeFiles/ProjectAkhirAlgo-Group1.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/ProjectAkhirAlgo-Group1.dir/
-  TARGET_PDB = ProjectAkhirAlgo-Group1.pdb
+  OBJECT_DIR = CMakeFiles/main.dir
+  OBJECT_FILE_DIR = CMakeFiles/main.dir/src
+  TARGET_COMPILE_PDB = CMakeFiles/main.dir/
+  TARGET_PDB = main.pdb
 
-build CMakeFiles/ProjectAkhirAlgo-Group1.dir/src/merch.c.o: C_COMPILER__ProjectAkhirAlgo-Group1_Debug /home/itshiroto/coding/kuliah-git/Algo-Kelompok1/src/merch.c || cmake_object_order_depends_target_ProjectAkhirAlgo-Group1
-  DEP_FILE = CMakeFiles/ProjectAkhirAlgo-Group1.dir/src/merch.c.o.d
+build CMakeFiles/main.dir/src/merch.c.o: C_COMPILER__main_Debug /home/itshiroto/coding/kuliah-git/Algo-Kelompok1/src/merch.c || cmake_object_order_depends_target_main
+  DEP_FILE = CMakeFiles/main.dir/src/merch.c.o.d
   FLAGS = -g
   INCLUDES = -I/home/itshiroto/coding/kuliah-git/Algo-Kelompok1/includes
-  OBJECT_DIR = CMakeFiles/ProjectAkhirAlgo-Group1.dir
-  OBJECT_FILE_DIR = CMakeFiles/ProjectAkhirAlgo-Group1.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/ProjectAkhirAlgo-Group1.dir/
-  TARGET_PDB = ProjectAkhirAlgo-Group1.pdb
+  OBJECT_DIR = CMakeFiles/main.dir
+  OBJECT_FILE_DIR = CMakeFiles/main.dir/src
+  TARGET_COMPILE_PDB = CMakeFiles/main.dir/
+  TARGET_PDB = main.pdb
 
-build CMakeFiles/ProjectAkhirAlgo-Group1.dir/src/system.c.o: C_COMPILER__ProjectAkhirAlgo-Group1_Debug /home/itshiroto/coding/kuliah-git/Algo-Kelompok1/src/system.c || cmake_object_order_depends_target_ProjectAkhirAlgo-Group1
-  DEP_FILE = CMakeFiles/ProjectAkhirAlgo-Group1.dir/src/system.c.o.d
+build CMakeFiles/main.dir/src/system.c.o: C_COMPILER__main_Debug /home/itshiroto/coding/kuliah-git/Algo-Kelompok1/src/system.c || cmake_object_order_depends_target_main
+  DEP_FILE = CMakeFiles/main.dir/src/system.c.o.d
   FLAGS = -g
   INCLUDES = -I/home/itshiroto/coding/kuliah-git/Algo-Kelompok1/includes
-  OBJECT_DIR = CMakeFiles/ProjectAkhirAlgo-Group1.dir
-  OBJECT_FILE_DIR = CMakeFiles/ProjectAkhirAlgo-Group1.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/ProjectAkhirAlgo-Group1.dir/
-  TARGET_PDB = ProjectAkhirAlgo-Group1.pdb
+  OBJECT_DIR = CMakeFiles/main.dir
+  OBJECT_FILE_DIR = CMakeFiles/main.dir/src
+  TARGET_COMPILE_PDB = CMakeFiles/main.dir/
+  TARGET_PDB = main.pdb
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target ProjectAkhirAlgo-Group1
+# Link build statements for EXECUTABLE target main
 
 
 #############################################
-# Link the executable ProjectAkhirAlgo-Group1
+# Link the executable main
 
-build ProjectAkhirAlgo-Group1: C_EXECUTABLE_LINKER__ProjectAkhirAlgo-Group1_Debug CMakeFiles/ProjectAkhirAlgo-Group1.dir/src/main.c.o CMakeFiles/ProjectAkhirAlgo-Group1.dir/src/merch.c.o CMakeFiles/ProjectAkhirAlgo-Group1.dir/src/system.c.o
+build main: C_EXECUTABLE_LINKER__main_Debug CMakeFiles/main.dir/src/main.c.o CMakeFiles/main.dir/src/merch.c.o CMakeFiles/main.dir/src/system.c.o
   FLAGS = -g
   LINK_FLAGS = -rdynamic
-  OBJECT_DIR = CMakeFiles/ProjectAkhirAlgo-Group1.dir
+  OBJECT_DIR = CMakeFiles/main.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/ProjectAkhirAlgo-Group1.dir/
-  TARGET_FILE = ProjectAkhirAlgo-Group1
-  TARGET_PDB = ProjectAkhirAlgo-Group1.pdb
+  TARGET_COMPILE_PDB = CMakeFiles/main.dir/
+  TARGET_FILE = main
+  TARGET_PDB = main.pdb
 
 
 #############################################
@@ -153,7 +153,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /home/itshiroto/coding/kuliah-git/Algo-Kelompok1/build
 
-build all: phony ProjectAkhirAlgo-Group1
+build all: phony main
 
 # =============================================================================
 # Unknown Build Time Dependencies.
