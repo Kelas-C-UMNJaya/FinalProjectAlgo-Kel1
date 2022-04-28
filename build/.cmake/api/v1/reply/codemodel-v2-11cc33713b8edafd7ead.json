@@ -6,7 +6,6 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.0.0"
@@ -38,9 +37,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "main::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-main-Debug-0b26d311199f32c764b8.json",
-					"name" : "main",
+					"id" : "ProjectAkhirAlgo-Group1::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ProjectAkhirAlgo-Group1-Debug-638b28f406384f611411.json",
+					"name" : "ProjectAkhirAlgo-Group1",
 					"projectIndex" : 0
 				}
 			]
@@ -49,12 +48,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/itshiroto/coding/kuliah-git/Algo-Kelompok1/build",
-		"source" : "/home/itshiroto/coding/kuliah-git/Algo-Kelompok1"
+		"build" : "/home/jefer/Kuliah/FinalProjectAlgo-Kel1/build",
+		"source" : "/home/jefer/Kuliah/FinalProjectAlgo-Kel1"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 4
+		"minor" : 0
 	}
 }

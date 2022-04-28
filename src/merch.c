@@ -70,6 +70,7 @@ int merch() {
     //   pesan();
     //   break;
     case 0:
+      return 0;
       break;
     default:
       break;

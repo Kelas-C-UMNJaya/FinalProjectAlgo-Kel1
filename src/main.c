@@ -1,5 +1,6 @@
 #include "merch.h"
 #include "system.h"
+#include "tiket.h"
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,21 +11,6 @@
 // - List semua barang/tiket
 // - Pesan barang/tiket
 // - Kembali ke menu utama
-
-int menuTiket() {
-  int tiketChoose;
-  printf("==============================\n");
-  printf("|            Tiket           |\n");
-  printf("==============================\n");
-  printf("1. Event Trending Bulan Ini\n"
-         "2. Event Yang Akan Datang\n"
-         "3. Pembelian Tiket\n"
-         "0. Kembali Ke Menu Utama\n"
-         "Pilihan: ");
-  scanf("%d", &tiketChoose);
-  printf("\n");
-  return tiketChoose;
-}
 
 int menuVOD() {
   int vodChoose;
@@ -61,7 +47,7 @@ int main() {
   while (keepGoing) {
     switch (mainMenu()) {
     case 1:
-      menuTiket();
+      tiket();
       break;
     case 2:
       menuVOD();

@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "main"
+			"path" : "ProjectAkhirAlgo-Group1"
 		}
 	],
 	"backtrace" : 1,
@@ -42,14 +42,14 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g"
+					"fragment" : "-g  "
 				}
 			],
 			"includes" : 
 			[
 				{
 					"backtrace" : 2,
-					"path" : "/home/itshiroto/coding/kuliah-git/Algo-Kelompok1/includes"
+					"path" : "/home/jefer/Kuliah/FinalProjectAlgo-Kel1/includes"
 				}
 			],
 			"language" : "C",
@@ -57,11 +57,13 @@
 			[
 				0,
 				1,
-				2
+				2,
+				3,
+				4
 			]
 		}
 	],
-	"id" : "main::@6890427a1f51a3e7e1df",
+	"id" : "ProjectAkhirAlgo-Group1::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -77,8 +79,8 @@
 		],
 		"language" : "C"
 	},
-	"name" : "main",
-	"nameOnDisk" : "main",
+	"name" : "ProjectAkhirAlgo-Group1",
+	"nameOnDisk" : "ProjectAkhirAlgo-Group1",
 	"paths" : 
 	{
 		"build" : ".",
@@ -92,7 +94,9 @@
 			[
 				0,
 				1,
-				2
+				2,
+				3,
+				4
 			]
 		}
 	],
@@ -114,6 +118,18 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "src/system.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/tiket.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/vod.c",
 			"sourceGroupIndex" : 0
 		}
 	],
