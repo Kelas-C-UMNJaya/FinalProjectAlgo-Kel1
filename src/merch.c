@@ -1,7 +1,10 @@
+#include "fileProc.h"
 #include "system.h"
 #include <stdio.h>
 
-typedef struct {
+typedef struct
+{
+  // int id;
   char namaBarang[50];
   int hargaBarang;
 } Barang;
@@ -11,7 +14,8 @@ typedef struct {
 //   getchar();
 // }
 
-int menuMerch() {
+int menuMerch()
+{
   int merchChoose;
   printf("==============================\n");
   printf("|           Merch            |\n");
@@ -27,39 +31,38 @@ int menuMerch() {
   return merchChoose;
 }
 
-void daftar() {
+void daftar()
+{
   int i = 0;
-  Barang barang[6];
-
-  FILE *fp = fopen("../data/Daftar_Barang.txt", "r");
+  Barang barang[12];
 
   puts("===============================");
   puts("=======| Daftar Barang |=======");
   puts("===============================");
 
-  while (!feof(fp)) {
-    Barang newBarang;
-    fscanf(fp, "%[^,],%d\n", &newBarang.namaBarang, &newBarang.hargaBarang);
-    barang[i] = newBarang;
-    i++;
-  }
+  proc(barang);
 
   printf("\n");
-  for (i = 0; i < 6; i++) {
+  for (i = 0; i < 12; i++)
+  {
     printf("Barang ke-%d\n", i + 1);
+    // printf("ID : %d\n", barang[i].id);
     printf("Nama Barang: %s\n", barang[i].namaBarang);
     printf("Harga Barang: Rp%d\n", barang[i].hargaBarang);
     printf("\n");
   }
-  fclose(fp);
+
   prompt();
   cls();
 }
 
-int merch() {
-  while (1) {
+int merch()
+{
+  while (1)
+  {
 
-    switch (menuMerch()) {
+    switch (menuMerch())
+    {
     // case 1:
     //   topSales();
     //   break;

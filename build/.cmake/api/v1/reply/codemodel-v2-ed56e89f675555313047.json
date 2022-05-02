@@ -38,7 +38,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "ProjectAkhirAlgo-Group1::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ProjectAkhirAlgo-Group1-Debug-638b28f406384f611411.json",
+					"jsonFile" : "target-ProjectAkhirAlgo-Group1-Debug-d5edeffc2e9ca5c1379a.json",
 					"name" : "ProjectAkhirAlgo-Group1",
 					"projectIndex" : 0
 				}
@@ -48,8 +48,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/jefer/Kuliah/FinalProjectAlgo-Kel1/build",
-		"source" : "/home/jefer/Kuliah/FinalProjectAlgo-Kel1"
+		"build" : "/home/ivan/kuliah/github/FinalProjectAlgo-Kel1/build",
+		"source" : "/home/ivan/kuliah/github/FinalProjectAlgo-Kel1"
 	},
 	"version" : 
 	{

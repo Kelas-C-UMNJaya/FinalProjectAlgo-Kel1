@@ -4,3 +4,9 @@ Masker,5000
 Sepatu,100000
 Jaket,250000
 Kacamata,30000
+Gelang,10000
+Gelas,25000
+Gantungan Kunci,5000
+Payung,15000
+Poster,5000
+Stiker,2000
