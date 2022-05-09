@@ -6,7 +6,7 @@ void prompt() {
   if (PLATFORM_NAME == "win") {
     system("pause");
   } else {
-    printf("Press any key to continue...");
+    printf("Press enter to continue...");
     getchar();
   }
 }
