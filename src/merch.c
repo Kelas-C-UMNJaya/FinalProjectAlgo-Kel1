@@ -2,20 +2,15 @@
 #include "system.h"
 #include <stdio.h>
 
-typedef struct
-{
+typedef struct {
   // int id;
   char namaBarang[50];
   int hargaBarang;
 } Barang;
 
-// void prompt() {
-//   printf("\nTekan apa saja untuk melanjutkan...");
-//   getchar();
-// }
+Barang barang[100];
 
-int menuMerch()
-{
+int menuMerch() {
   int merchChoose;
   printf("==============================\n");
   printf("|           Merch            |\n");
@@ -31,20 +26,15 @@ int menuMerch()
   return merchChoose;
 }
 
-void daftar()
-{
+void daftar() {
   int i = 0;
-  Barang barang[12];
 
   puts("===============================");
   puts("=======| Daftar Barang |=======");
   puts("===============================");
 
-  proc(barang);
-
   printf("\n");
-  for (i = 0; i < 12; i++)
-  {
+  for (i = 0; i < 12; i++) {
     printf("Barang ke-%d\n", i + 1);
     // printf("ID : %d\n", barang[i].id);
     printf("Nama Barang: %s\n", barang[i].namaBarang);
@@ -56,13 +46,11 @@ void daftar()
   cls();
 }
 
-int merch()
-{
-  while (1)
-  {
+int merch() {
+  proc(barang);
+  while (1) {
 
-    switch (menuMerch())
-    {
+    switch (menuMerch()) {
     // case 1:
     //   topSales();
     //   break;
