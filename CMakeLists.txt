@@ -7,7 +7,7 @@ project(ProjectAkhirAlgo-Group1 LANGUAGES C VERSION 0.1.0)
 include_directories(includes)
 
 file(GLOB SOURCES "src/*.c")
-add_executable(ProjectAkhirAlgo-Group1 ${SOURCES})
+add_executable(main ${SOURCES})
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
