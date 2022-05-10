@@ -1,19 +1,17 @@
+#include "fileProc.h"
 #include <stdio.h>
+#include <string.h>
 
-typedef struct {
-  // int id[3];
-  char namaBarang[50];
-  int hargaBarang;
-} Barang;
-
-void proc(Barang barang[12]) {
+void proc(char *namaFile, Barang arr[]) {
   int i = 0;
-  FILE *fp = fopen("../data/Daftar_Barang.txt", "r");
+  char fileIn[100] = "../data/";
+  strcat(fileIn, namaFile);
+  FILE *fp = fopen(fileIn, "r");
 
   while (!feof(fp)) {
-    Barang newBarang;
+    struct barang newBarang;
     fscanf(fp, "%[^,],%d\n", newBarang.namaBarang, &newBarang.hargaBarang);
-    barang[i] = newBarang;
+    arr[i] = newBarang;
     i++;
   }
   fclose(fp);

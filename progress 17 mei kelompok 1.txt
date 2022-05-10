@@ -1,0 +1,13 @@
+Nama Kelompok
+- Rivo Juicer Wowor (00000059635)
+- Christian Ivan Wibowo (00000058450)
+- Basilius Jethro (00000057833)
+- Jefer Setiawan (00000059297)
+- Areta Escalonia Candra(00000057872)
+
+LIST YANG SUDAH DIKERJAKAN
+- Konfigurasi CMake untuk multi-file programming.
+- Konfigurasi formatting document untuk vscode agar penulisan kode tetap konsisten.
+- Implementasi File Processing secara modular (menerima argumen file input dan array databasenya).
+- Menyelesaikan function untuk menampilkan menu untuk masing-masing fungsi (VOD, Tiket, dan Merch).
+- Memperbaiki beberapa error dan merapikan beberapa kode.
