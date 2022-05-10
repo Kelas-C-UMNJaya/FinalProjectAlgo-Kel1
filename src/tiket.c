@@ -1,4 +1,5 @@
-#include "system.h"
+#include "fileProc.h"
+#include "util.h"
 #include <stdio.h>
 
 int tiket_menu() {
@@ -11,7 +12,7 @@ int tiket_menu() {
          "3. Pembelian Tiket\n"
          "0. Kembali Ke Menu Utama\n"
          "Pilihan: ");
-  scanf("%d", &tiketChoose);
+  scanf("%d%*c", &tiketChoose);
   printf("\n");
   cls();
   return tiketChoose;

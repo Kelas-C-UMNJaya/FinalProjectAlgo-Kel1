@@ -1,6 +1,7 @@
+#include "VOD.h"
 #include "merch.h"
-#include "system.h"
 #include "tiket.h"
+#include "util.h"
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,21 +12,6 @@
 // - List semua barang/tiket
 // - Pesan barang/tiket
 // - Kembali ke menu utama
-
-int menuVOD() {
-  int vodChoose;
-  printf("==============================\n");
-  printf("|            VOD             |\n");
-  printf("==============================\n");
-  printf("1. VOD Trending Bulan Ini\n"
-         "2. Daftar Semua VOD \n"
-         "3. Pembelian VOD\n"
-         "0. Kembali Ke Menu Utama\n"
-         "Pilihan: ");
-  scanf("%d", &vodChoose);
-  printf("\n");
-  return vodChoose;
-}
 
 int mainMenu() {
   int pilih;
@@ -50,7 +36,7 @@ int main() {
       tiket();
       break;
     case 2:
-      menuVOD();
+      VOD();
       break;
     case 3:
       merch();

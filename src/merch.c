@@ -1,12 +1,6 @@
 #include "fileProc.h"
-#include "system.h"
+#include "util.h"
 #include <stdio.h>
-
-typedef struct {
-  // int id;
-  char namaBarang[50];
-  int hargaBarang;
-} Barang;
 
 Barang barang[100];
 
@@ -46,8 +40,22 @@ void daftar() {
   cls();
 }
 
+void pesan() {
+  int i = 0;
+
+  puts("================================");
+  puts("========| Pesan Barang |========");
+  puts("================================");
+
+  printf("\n");
+  printf("Nama Barang : ");
+  printf("Banyak Barang : ");
+  prompt();
+  cls();
+}
+
 int merch() {
-  proc(barang);
+  proc("Daftar_Barang.txt", barang);
   while (1) {
 
     switch (menuMerch()) {
@@ -57,9 +65,9 @@ int merch() {
     case 2:
       daftar();
       break;
-    // case 3:
-    //   pesan();
-    //   break;
+    case 3:
+      pesan();
+      break;
     case 0:
       return 0;
       break;
