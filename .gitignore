@@ -47,4 +47,4 @@ include/divisible/*
 
 .idea/*.xml
 
-build/*
+build/
