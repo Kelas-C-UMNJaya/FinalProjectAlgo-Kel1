@@ -1,35 +1,34 @@
-#include "fileProc.h"
 #include "util.h"
 #include <stdio.h>
 
-int tiket_menu() {
-  int tiketChoose;
+int VOD_menu() {
+  int VODChoose;
   printf("==============================\n");
-  printf("|            Tiket           |\n");
+  printf("|             VOD            |\n");
   printf("==============================\n");
-  printf("1. Event Trending Bulan Ini\n"
-         "2. Event Yang Akan Datang\n"
-         "3. Pembelian Tiket\n"
+  printf("1. Top VOD Bulan Ini\n"
+         "2. Daftar VOD\n"
+         "3. Pesan VOD\n"
          "0. Kembali Ke Menu Utama\n"
          "Pilihan: ");
-  scanf("%d%*c", &tiketChoose);
+  scanf("%d%*c", &VODChoose);
   printf("\n");
   cls();
-  return tiketChoose;
+  return VODChoose;
 }
 
-int tiket() {
+int VOD() {
   int keepGoing = 1;
   while (keepGoing) {
-    switch (tiket_menu()) {
+    switch (VOD_menu()) {
     case 1:
-      //   event_trending();
+      //   VOD_trending();
       break;
     case 2:
-      //   event_coming();
+      //   daftar_VOD();
       break;
     case 3:
-      //   pembelian_tiket();
+      //   pembelian_VOD();
       break;
     case 0:
       keepGoing = 0;
