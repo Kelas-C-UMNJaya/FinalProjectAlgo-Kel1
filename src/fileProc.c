@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 typedef struct {
-  // int id[3];
+  int id;
   char namaBarang[50];
   int hargaBarang;
 } Barang;
@@ -12,7 +12,7 @@ void proc(Barang barang[12]) {
 
   while (!feof(fp)) {
     Barang newBarang;
-    fscanf(fp, "%[^,],%d\n", newBarang.namaBarang, &newBarang.hargaBarang);
+    fscanf(fp, "%d,%[^,],%d\n", newBarang.id, newBarang.namaBarang, &newBarang.hargaBarang);
     barang[i] = newBarang;
     i++;
   }
