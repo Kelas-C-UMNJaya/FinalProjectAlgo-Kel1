@@ -1,3 +1,5 @@
+
+#include "DataTypes.h"
 #if defined(_WIN32) || defined(_WIN64)
 #  include <conio.h>
 #  define CLEAR "cls"
@@ -9,3 +11,4 @@
 
 void prompt();
 void cls();
+void listBarang(Barang barang[], int jumlah);

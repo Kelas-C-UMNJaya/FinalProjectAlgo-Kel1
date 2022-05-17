@@ -1,5 +1,5 @@
-#include "../includes/util.h"
-#include "../includes/fileProc.h"
+#include "util.h"
+// #include "../includes/fileProc.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -20,13 +20,12 @@ void cls() {
   }
 }
 
-void listBarang() {
-  Barang barang[100];
+void listBarang(Barang barang[], int jumlah) {
   puts("======+================+========");
   puts("| ID  |  Nama Barang   | Harga |");
   puts("======+================+========");
 
-  for (int i = 0; i < 12; i++) {
+  for (int i = 0; i < jumlah; i++) {
     printf("| %d  | %-15s | Rp%d |\n", barang[i].id, barang[i].namaBarang,
            barang[i].hargaBarang);
   }

@@ -3,6 +3,7 @@
 #include <stdio.h>
 
 Barang barang[100];
+int barang_jumlah = 0;
 
 int menuMerch() {
   int merchChoose;
@@ -20,6 +21,7 @@ int menuMerch() {
   return merchChoose;
 }
 
+// TODO ganti dengan yang di util.c
 void daftar() {
   int i = 0;
 
@@ -55,7 +57,7 @@ void pesan() {
 }
 
 int merch() {
-  procDB("Daftar_Barang.txt", barang);
+  procDB("Daftar_Barang.txt", barang, &barang_jumlah);
   while (1) {
 
     switch (menuMerch()) {
@@ -63,7 +65,7 @@ int merch() {
     //   topSales();
     //   break;
     case 2:
-      daftar();
+      listBarang(barang, barang_jumlah);
       break;
     case 3:
       pesan();
