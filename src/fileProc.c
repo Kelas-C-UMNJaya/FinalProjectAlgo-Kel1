@@ -11,7 +11,7 @@ void procDB(char *namaFile, Barang arr[]) {
   while (!feof(fp)) {
 
     struct barang newBarang;
-    fscanf(fp, "%[^,],%d\n", newBarang.namaBarang, &newBarang.hargaBarang);
+    fscanf(fp, "%d,%[^,],%d\n", newBarang.id, newBarang.namaBarang, &newBarang.hargaBarang);
     arr[i] = newBarang;
 
     i++;
@@ -25,7 +25,7 @@ void writeDB(char *namaFile, Barang arr[]) {
   FILE *fp = fopen(fileOut, "w");
 
   for (int i = 0; i < 10; i++) {
-    fprintf(fp, "%s,%d\n", arr[i].namaBarang, arr[i].hargaBarang);
+    fprintf(fp, "%d,%s,%d\n",arr[i].id, arr[i].namaBarang, arr[i].hargaBarang);
   }
   fclose(fp);
 }

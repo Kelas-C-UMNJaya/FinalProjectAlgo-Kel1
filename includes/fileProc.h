@@ -1,5 +1,5 @@
 typedef struct barang {
-  // int id[3];
+  int id;
   char namaBarang[50];
   int hargaBarang;
 } Barang;

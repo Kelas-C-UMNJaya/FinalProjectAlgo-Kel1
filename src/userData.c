@@ -17,7 +17,7 @@ UserData createUser() {
 
 void printUser(UserData user) {
   printf("Nama: %s\n", user.nama);
-  printf("Saldo: %d\n", user.saldo);
+  printf("Saldo: %lu\n", user.saldo);
   printf("Cart Size: %d\n", user.cartSize);
 }
 
@@ -30,7 +30,7 @@ UserData readUserFile() {
     return newUser;
   }
   UserData user;
-  fscanf(fp, "%[^,],%d\n", user.nama, &user.saldo);
+  fscanf(fp, "%[^,],%lu\n", user.nama, &user.saldo);
   readUserCart(&user);
   fclose(fp);
   return user;
@@ -38,7 +38,7 @@ UserData readUserFile() {
 
 void writeUserFile(UserData data) {
   FILE *fp = fopen("../data/user_data.txt", "w");
-  fprintf(fp, "%s,%d\n", data.nama, data.saldo);
+  fprintf(fp, "%s,%lu\n", data.nama, data.saldo);
   writeUserCart(data);
   fclose(fp);
 }

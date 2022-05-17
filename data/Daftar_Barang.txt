@@ -9,4 +9,4 @@
 10111,Gantungan Kunci,5000
 10121,Payung,15000
 10678,Poster,5000
-10986,Stiker,2000
+10986,Dakimakura,2000

@@ -1,3 +1,7 @@
 {
-  "cmake.configureOnOpen": false
+  "cmake.configureOnOpen": false,
+  "files.associations": {
+    "util.h": "c",
+    "stdlib.h": "c"
+  }
 }
