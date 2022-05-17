@@ -3,4 +3,4 @@ typedef struct barang {
   char namaBarang[50];
   int hargaBarang;
 } Barang;
-void proc(char *namaFile, Barang arr[]);
+void procDB(char *namaFile, Barang arr[]);

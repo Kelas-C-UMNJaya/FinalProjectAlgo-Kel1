@@ -1,6 +1,7 @@
 #include "VOD.h"
 #include "merch.h"
 #include "tiket.h"
+#include "userData.h"
 #include "util.h"
 #include <stdbool.h>
 #include <stdio.h>
@@ -30,6 +31,9 @@ int mainMenu() {
 
 int main() {
   bool keepGoing = true;
+  UserData user = readUserFile();
+  printUser(user);
+
   while (keepGoing) {
     switch (mainMenu()) {
     case 1:

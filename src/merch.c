@@ -55,7 +55,7 @@ void pesan() {
 }
 
 int merch() {
-  proc("Daftar_Barang.txt", barang);
+  procDB("Daftar_Barang.txt", barang);
   while (1) {
 
     switch (menuMerch()) {
