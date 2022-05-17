@@ -9,9 +9,11 @@ void procDB(char *namaFile, Barang arr[]) {
   FILE *fp = fopen(fileIn, "r");
 
   while (!feof(fp)) {
+
     struct barang newBarang;
     fscanf(fp, "%[^,],%d\n", newBarang.namaBarang, &newBarang.hargaBarang);
     arr[i] = newBarang;
+
     i++;
   }
   fclose(fp);
