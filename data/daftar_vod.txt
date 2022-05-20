@@ -1,10 +1,10 @@
-055,Ben & Rivo,100000
-056,Ben & Jefer,100000
-057,Github,100000
-058,Radit,100000
-059,Patungan,100000
-060,Spiderman,100000
-061,Avengers,100000
-062,Ironman,100000
-063,Captain America,100000
-064,Hulk,100000
+212,Ben & Rivo,100000
+221,Ben & Jefer,100000
+222,Radit,100000
+234,Ironman,100000
+253,Github,100000
+256,Patungan,100000
+271,Captain America,100000
+281,Hulk,100000
+288,Spiderman,100000
+298,Avengers,100000
