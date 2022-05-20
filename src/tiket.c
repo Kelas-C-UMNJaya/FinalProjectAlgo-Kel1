@@ -1,6 +1,10 @@
 #include "fileProc.h"
+#include "userData.h"
 #include "util.h"
 #include <stdio.h>
+
+Barang _TIKETDB[100];
+int _TIKETQTY = 0;
 
 int tiket_menu() {
   int tiketChoose;
@@ -20,13 +24,15 @@ int tiket_menu() {
 
 int tiket() {
   int keepGoing = 1;
+  procDB("daftar_tiket.txt", _TIKETDB, &_TIKETQTY);
+
   while (keepGoing) {
     switch (tiket_menu()) {
     case 1:
       //   event_trending();
       break;
     case 2:
-      //   event_coming();
+      listBarang(_TIKETDB, _TIKETQTY);
       break;
     case 3:
       //   pembelian_tiket();

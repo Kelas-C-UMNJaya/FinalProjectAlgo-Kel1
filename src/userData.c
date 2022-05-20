@@ -29,6 +29,7 @@ void readUserFile() {
     UserData newUser = createUser();
     writeUserFile(newUser);
     _USERDATA = newUser;
+    return;
   }
   UserData user;
   fscanf(fp, "%[^,],%lu\n", user.nama, &user.saldo);

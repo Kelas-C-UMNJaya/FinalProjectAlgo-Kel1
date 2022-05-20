@@ -1,9 +1,10 @@
 #include "fileProc.h"
+#include "userData.h"
 #include "util.h"
 #include <stdio.h>
 
-Barang barang[100];
-int barang_jumlah = 0;
+Barang _VODDB[100];
+int _VODQTY = 0;
 
 int VOD_menu() {
   int VODChoose;
@@ -23,7 +24,7 @@ int VOD_menu() {
 
 int VOD() {
   int keepGoing = 1;
-  procDB("daftar_vod.txt", barang, &barang_jumlah);
+  procDB("daftar_vod.txt", _VODDB, &_VODQTY);
 
   while (keepGoing) {
     switch (VOD_menu()) {
@@ -31,7 +32,7 @@ int VOD() {
       //   VOD_trending();
       break;
     case 2:
-      listBarang(barang, barang_jumlah);
+      listBarang(_VODDB, _VODQTY);
       break;
     case 3:
       //   pembelian_VOD();
