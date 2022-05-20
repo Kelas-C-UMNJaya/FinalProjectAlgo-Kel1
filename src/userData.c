@@ -12,6 +12,7 @@ UserData createUser() {
   scanf("%[^\n]%*c", nama);
   strcpy(newUser.nama, nama);
   newUser.saldo = saldo;
+  initCart(&newUser);
   return newUser;
 }
 
@@ -72,6 +73,7 @@ void readUserFile() {
     UserData newUser = createUser();
     writeUserFile(newUser);
     _USERDATA = newUser;
+    return;
   }
   UserData user;
   fscanf(fp, "%[^,],%lu\n", user.nama, &user.saldo);
@@ -95,6 +97,7 @@ void readUserCart(UserData *user) {
     exit(1);
   }
   int i = 0;
+  initCart(user);
   while (!feof(fp)) {
     struct barang newBarang;
     char buffer[100];

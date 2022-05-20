@@ -7,13 +7,14 @@
 
 int menuMerch() {
   int merchChoose;
-  printf("==============================\n");
-  printf("|           Merch            |\n");
-  printf("==============================\n");
-  printf("1. Top Sale Bulan Ini\n"
-         "2. Daftar Barang\n"
-         "3. Pesan Barang\n"
-         "0. Kembali Ke Menu Utama\n"
+  printf("+================================+\n");
+  printf("|              Merch             |\n");
+  printf("+================================+\n");
+  printf("|1. Top Sale Bulan Ini           |\n"
+         "|2. Daftar Barang                |\n"
+         "|3. Pesan Barang                 |\n"
+         "|0. Kembali Ke Menu Utama        |\n"
+         "+================================+\n"
          "Pilihan: ");
   scanf("%d%*c", &merchChoose);
   printf("\n");
@@ -22,6 +23,7 @@ int menuMerch() {
 }
 
 int merch() {
+  int id;
   procDB("daftar_merch.txt", _MERCHDB, &_MERCHQTY);
   while (1) {
     switch (menuMerch()) {

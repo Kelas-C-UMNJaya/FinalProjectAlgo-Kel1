@@ -24,14 +24,15 @@ int _TIKETQTY = 0;
 
 int mainMenu() {
   int pilih;
-  printf("==============================\n");
-  printf("|          Main Menu         |\n");
-  printf("==============================\n");
-  printf("1. Beli Tiket\n"
-         "2. Beli Digital Download\n"
-         "3. Beli Merch\n"
-         "0. Keluar\n");
-  printf("Pilihan: ");
+  printf("+================================+\n");
+  printf("|            Main Menu           |\n");
+  printf("+================================+\n");
+  printf("|1. Beli Tiket                   |\n"
+         "|2. Beli Digital Download        |\n"
+         "|3. Beli Merch                   |\n"
+         "|0. Keluar                       |\n"
+         "+================================+\n"
+         "Pilihan: ");
   scanf("%d", &pilih);
   printf("\n");
   return pilih;

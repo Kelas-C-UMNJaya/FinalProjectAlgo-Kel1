@@ -1,16 +1,19 @@
+#include "DB.h"
 #include "fileProc.h"
+#include "userData.h"
 #include "util.h"
 #include <stdio.h>
 
 int tiket_menu() {
   int tiketChoose;
-  printf("==============================\n");
-  printf("|            Tiket           |\n");
-  printf("==============================\n");
-  printf("1. Event Trending Bulan Ini\n"
-         "2. Event Yang Akan Datang\n"
-         "3. Pembelian Tiket\n"
-         "0. Kembali Ke Menu Utama\n"
+  printf("+================================+\n");
+  printf("|              Tiket             |\n");
+  printf("+================================+\n");
+  printf("|1. Event Trending Bulan Ini     |\n"
+         "|2. Event Yang Akan Datang       |\n"
+         "|3. Pembelian Tiket              |\n"
+         "|0. Kembali Ke Menu Utama        |\n"
+         "+================================+\n"
          "Pilihan: ");
   scanf("%d%*c", &tiketChoose);
   printf("\n");
@@ -20,13 +23,15 @@ int tiket_menu() {
 
 int tiket() {
   int keepGoing = 1;
+  procDB("daftar_tiket.txt", _TIKETDB, &_TIKETQTY);
+
   while (keepGoing) {
     switch (tiket_menu()) {
     case 1:
       //   event_trending();
       break;
     case 2:
-      //   event_coming();
+      listBarang(_TIKETDB, _TIKETQTY);
       break;
     case 3:
       //   pembelian_tiket();
