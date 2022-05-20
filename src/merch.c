@@ -13,7 +13,7 @@ int menuMerch() {
   printf("|1. Top Sale Bulan Ini           |\n"
          "|2. Daftar Barang                |\n"
          "|3. Pesan Barang                 |\n"
-         "|0. Kembali Ke Menu Utama        |\n"
+         "|0. Kembali                      |\n"
          "+================================+\n"
          "Pilihan: ");
   scanf("%d%*c", &merchChoose);
@@ -34,15 +34,7 @@ int merch() {
       listBarang(_MERCHDB, _MERCHQTY);
       break;
     case 3:
-      printf("Masukkan ID barang: ");
-      scanf("%d%*c", &id);
-      Barang *barangFind = searchBarang(id, _MERCHDB, _MERCHQTY);
-      if (barangFind == NULL) {
-        printf("Barang tidak ditemukan\n");
-        break;
-      }
-      printf("Nama barang: %s\n", (*barangFind).namaBarang);
-      printf("Harga barang: Rp%d\n", (*barangFind).hargaBarang);
+      promptSearch(_MERCHDB, _MERCHQTY);
       break;
     case 0:
       return 0;

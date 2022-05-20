@@ -30,7 +30,20 @@ void printUser() {
 
 void addToCart(UserData *user, Barang data) {
   Cart *newItem = (Cart *)malloc(sizeof(Cart));
+  newItem->data = data;
   newItem->next = NULL;
+  while ((long)user->saldo - data.hargaBarang < 0) {
+    printf("Saldo anda tidak mencukupi\n");
+    printf("Ingin Top Up? (y/n): ");
+    char c;
+    scanf("%c%*c", &c);
+    if (c == 'y') {
+      topup();
+    } else {
+      return;
+    }
+  }
+  dedup(data.hargaBarang);
   if (user->cartFront == NULL) {
     user->cartFront = user->cartBack = newItem;
   } else {
@@ -47,8 +60,31 @@ void removeFrontCart(UserData *user) {
   user->cartSize--;
 }
 
-void topup(unsigned long saldo) { _USERDATA.saldo += saldo; }
-void dedup(unsigned long saldo) { _USERDATA.saldo -= saldo; }
+void printCart(UserData *user) {
+  Cart *temp = user->cartFront;
+  // TODO cantikin printnya
+  printf("+================================+\n");
+  printf("|          Shopping Cart         |\n");
+  printf("+================================+\n");
+  while (temp != NULL) {
+    printf("ID: %d\n", temp->data.id);
+    printf("Nama: %s\n", temp->data.namaBarang);
+    printf("Harga: Rp%d\n", temp->data.hargaBarang);
+    printf("+================================+\n");
+    temp = temp->next;
+  }
+}
+
+void topup() {
+  printf("Masukkan jumlah top up: ");
+  unsigned long topUp;
+  scanf("%lu%*c", &topUp);
+  _USERDATA.saldo += topUp;
+}
+unsigned long dedup(unsigned long saldo) {
+  _USERDATA.saldo -= saldo;
+  return _USERDATA.saldo;
+}
 
 void readUserFile() {
   FILE *fp = fopen("../data/user_data.txt", "r");
@@ -84,7 +120,15 @@ void readUserCart(UserData *user) {
   initCart(user);
   while (!feof(fp)) {
     struct barang newBarang;
-    fscanf(fp, "%[^,],%d\n", newBarang.namaBarang, &newBarang.hargaBarang);
+    char buffer[100];
+    fgets(buffer, 100, fp);
+    if (strcmp(buffer, "") == 0) {
+      printf("%s", buffer);
+      printf("data is empty\n");
+      break;
+    }
+    // fscanf(fp, "%[^,],%d\n", newBarang.namaBarang, &newBarang.hargaBarang);
+    sscanf(buffer, "%[^\n],%d\n", newBarang.namaBarang, &newBarang.hargaBarang);
     addToCart(user, newBarang);
     i++;
   }
