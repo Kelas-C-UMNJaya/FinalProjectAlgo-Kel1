@@ -29,6 +29,7 @@ void printUser() {
 
 void addToCart(UserData *user, Barang data) {
   Cart *newItem = (Cart *)malloc(sizeof(Cart));
+  newItem->data = data;
   newItem->next = NULL;
   if (user->cartFront == NULL) {
     user->cartFront = user->cartBack = newItem;
@@ -44,6 +45,21 @@ void removeFrontCart(UserData *user) {
   user->cartFront = user->cartFront->next;
   free(temp);
   user->cartSize--;
+}
+
+void printCart(UserData *user) {
+  Cart *temp = user->cartFront;
+  // TODO cantikin printnya
+  printf("==============================\n");
+  printf("         Shopping Cart        \n");
+  printf("==============================\n");
+  while (temp != NULL) {
+    printf("ID: %d\n", temp->data.id);
+    printf("Nama: %s\n", temp->data.namaBarang);
+    printf("Harga: Rp%d\n", temp->data.hargaBarang);
+    printf("--------------------------------\n");
+    temp = temp->next;
+  }
 }
 
 void topup(unsigned long saldo) { _USERDATA.saldo += saldo; }
@@ -81,7 +97,15 @@ void readUserCart(UserData *user) {
   int i = 0;
   while (!feof(fp)) {
     struct barang newBarang;
-    fscanf(fp, "%[^,],%d\n", newBarang.namaBarang, &newBarang.hargaBarang);
+    char buffer[100];
+    fgets(buffer, 100, fp);
+    if (strcmp(buffer, "") == 0) {
+      printf("%s", buffer);
+      printf("data is empty\n");
+      break;
+    }
+    // fscanf(fp, "%[^,],%d\n", newBarang.namaBarang, &newBarang.hargaBarang);
+    sscanf(buffer, "%[^\n],%d\n", newBarang.namaBarang, &newBarang.hargaBarang);
     addToCart(user, newBarang);
     i++;
   }

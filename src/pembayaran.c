@@ -1,19 +1,35 @@
 #include "pembayaran.h"
+#include "userData.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-// Create a function that would search barang from database
-// using id as a key, and return the barang if found
-// with binary search
-Barang *searchBarang(int id, Barang barang[], int jumlah) {
+void promptSearch(Barang DB[], int qty) {
+  int id, isFound;
+  printf("Masukkan ID barang: ");
+  scanf("%d%*c", &id);
+  Barang barangFind = searchBarang(id, DB, qty, &isFound);
+  if (!isFound) {
+    printf("Barang tidak ditemukan\n");
+  }
+  printf("Nama barang: %s\n", barangFind.namaBarang);
+  printf("Harga barang: Rp%d\n", barangFind.hargaBarang);
+  printf("Tambahkan ke keranjang? (y/n) ");
+  char c;
+  scanf("%c%*c", &c);
+  if (c == 'y') {
+    addToCart(&_USERDATA, barangFind);
+    printCart(&_USERDATA);
+  }
+}
+
+Barang searchBarang(int id, Barang barang[], int jumlah, int *isFound) {
   int low = 0;
   int high = jumlah - 1;
   int mid = (low + high) / 2;
-  Barang *result = NULL;
   while (low <= high) {
     if (barang[mid].id == id) {
-      *result = barang[mid];
-      return result;
+      *isFound = 1;
+      return barang[mid];
     } else if (barang[mid].id > id) {
       high = mid - 1;
     } else {
@@ -21,7 +37,7 @@ Barang *searchBarang(int id, Barang barang[], int jumlah) {
     }
     mid = (low + high) / 2;
   }
-  return NULL;
+  *isFound = 0;
 }
 
 int bayar() {}

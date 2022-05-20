@@ -32,16 +32,7 @@ int merch() {
       listBarang(_MERCHDB, _MERCHQTY);
       break;
     case 3:
-      int id;
-      printf("Masukkan ID barang: ");
-      scanf("%d%*c", &id);
-      Barang *barangFind = searchBarang(id, _MERCHDB, _MERCHQTY);
-      if (barangFind == NULL) {
-        printf("Barang tidak ditemukan\n");
-        break;
-      }
-      printf("Nama barang: %s\n", (*barangFind).namaBarang);
-      printf("Harga barang: Rp%d\n", (*barangFind).hargaBarang);
+      promptSearch(_MERCHDB, _MERCHQTY);
       break;
     case 0:
       return 0;
