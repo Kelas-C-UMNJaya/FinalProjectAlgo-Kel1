@@ -34,7 +34,6 @@ int merch() {
       listBarang(_MERCHDB, _MERCHQTY);
       break;
     case 3:
-      pesan();
       break;
     case 0:
       return 0;
