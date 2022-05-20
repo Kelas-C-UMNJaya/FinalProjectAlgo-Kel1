@@ -32,6 +32,18 @@ void addToCart(UserData *user, Barang data) {
   Cart *newItem = (Cart *)malloc(sizeof(Cart));
   newItem->data = data;
   newItem->next = NULL;
+  while ((long)user->saldo - data.hargaBarang < 0) {
+    printf("Saldo anda tidak mencukupi\n");
+    printf("Ingin Top Up? (y/n): ");
+    char c;
+    scanf("%c%*c", &c);
+    if (c == 'y') {
+      topup();
+    } else {
+      return;
+    }
+  }
+  dedup(data.hargaBarang);
   if (user->cartFront == NULL) {
     user->cartFront = user->cartBack = newItem;
   } else {
@@ -51,20 +63,28 @@ void removeFrontCart(UserData *user) {
 void printCart(UserData *user) {
   Cart *temp = user->cartFront;
   // TODO cantikin printnya
-  printf("==============================\n");
-  printf("         Shopping Cart        \n");
-  printf("==============================\n");
+  printf("+================================+\n");
+  printf("|          Shopping Cart         |\n");
+  printf("+================================+\n");
   while (temp != NULL) {
     printf("ID: %d\n", temp->data.id);
     printf("Nama: %s\n", temp->data.namaBarang);
     printf("Harga: Rp%d\n", temp->data.hargaBarang);
-    printf("--------------------------------\n");
+    printf("+================================+\n");
     temp = temp->next;
   }
 }
 
-void topup(unsigned long saldo) { _USERDATA.saldo += saldo; }
-void dedup(unsigned long saldo) { _USERDATA.saldo -= saldo; }
+void topup() {
+  printf("Masukkan jumlah top up: ");
+  unsigned long topUp;
+  scanf("%lu%*c", &topUp);
+  _USERDATA.saldo += topUp;
+}
+unsigned long dedup(unsigned long saldo) {
+  _USERDATA.saldo -= saldo;
+  return _USERDATA.saldo;
+}
 
 void readUserFile() {
   FILE *fp = fopen("../data/user_data.txt", "r");

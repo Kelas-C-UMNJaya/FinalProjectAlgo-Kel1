@@ -40,8 +40,8 @@ void listBarang(Barang barang[], int jumlah) {
     printf("+======+=================================+=============+\n");
     puts("|1. Next Page                                          |");
     puts("|2. Previous Page                                      |");
-    puts("|0. Back                                               |");
-    printf("+======+=================================+=============+\n");
+    puts("|0. Kembali                                            |");
+    printf("+======================================================+\n");
     printf("Pilihan: ");
     scanf("%d%*c", &user);
 

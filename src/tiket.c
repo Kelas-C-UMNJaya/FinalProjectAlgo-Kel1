@@ -12,7 +12,7 @@ int tiket_menu() {
   printf("|1. Event Trending Bulan Ini     |\n"
          "|2. Event Yang Akan Datang       |\n"
          "|3. Pembelian Tiket              |\n"
-         "|0. Kembali Ke Menu Utama        |\n"
+         "|0. Kembali                      |\n"
          "+================================+\n"
          "Pilihan: ");
   scanf("%d%*c", &tiketChoose);
@@ -40,7 +40,7 @@ int tiket() {
       keepGoing = 0;
       break;
     default:
-      printf("Pilihan tidak ada\n");
+      printf("Pilihan Tidak Valid\n");
       break;
     }
   }

@@ -30,6 +30,7 @@ int mainMenu() {
   printf("|1. Beli Tiket                   |\n"
          "|2. Beli Digital Download        |\n"
          "|3. Beli Merch                   |\n"
+         "|4. Tampilkan Shopping Cart      |\n"
          "|0. Keluar                       |\n"
          "+================================+\n"
          "Pilihan: ");
@@ -60,6 +61,10 @@ int main() {
       break;
     case 3:
       merch();
+      break;
+    case 4:
+      printUser();
+      printCart(&_USERDATA);
       break;
     case 0:
       keepGoing = false;

@@ -18,7 +18,7 @@ void promptSearch(Barang DB[], int qty) {
   scanf("%c%*c", &c);
   if (c == 'y') {
     addToCart(&_USERDATA, barangFind);
-    printCart(&_USERDATA);
+    printf("Barang telah berhasil ditambahkan ke keranjang!\n");
   }
 }
 

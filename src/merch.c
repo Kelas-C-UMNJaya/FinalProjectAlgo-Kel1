@@ -13,7 +13,7 @@ int menuMerch() {
   printf("|1. Top Sale Bulan Ini           |\n"
          "|2. Daftar Barang                |\n"
          "|3. Pesan Barang                 |\n"
-         "|0. Kembali Ke Menu Utama        |\n"
+         "|0. Kembali                      |\n"
          "+================================+\n"
          "Pilihan: ");
   scanf("%d%*c", &merchChoose);

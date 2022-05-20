@@ -10,6 +10,8 @@ void initCart(UserData *user);
 void printUser();
 void addToCart(UserData *user, Barang data);
 void printCart(UserData *user);
+void topup();
+unsigned long dedup(unsigned long saldo);
 void writeUserFile(UserData data);
 void readUserCart(UserData *user);
 void writeUserCart(UserData user);

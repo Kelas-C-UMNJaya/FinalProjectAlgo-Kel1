@@ -12,7 +12,7 @@ int VOD_menu() {
   printf("|1. Top VOD Bulan Ini            |\n"
          "|2. Daftar VOD                   |\n"
          "|3. Pesan VOD                    |\n"
-         "|0. Kembali Ke Menu Utama        |\n"
+         "|0. Kembali                      |\n"
          "+================================+\n"
          "Pilihan: ");
   scanf("%d%*c", &VODChoose);
@@ -40,7 +40,7 @@ int VOD() {
       keepGoing = 0;
       break;
     default:
-      printf("Pilihan tidak ada\n");
+      printf("Pilihan Tidak Valid\n");
       break;
     }
   }
