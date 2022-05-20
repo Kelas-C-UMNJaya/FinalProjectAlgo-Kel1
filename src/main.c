@@ -1,3 +1,4 @@
+#include "DB.h"
 #include "VOD.h"
 #include "merch.h"
 #include "tiket.h"
@@ -14,6 +15,8 @@
 // - Pesan barang/tiket
 // - Kembali ke menu utama
 
+Barang _MERCHDB[100];
+int _MERCHQTY = 0;
 int mainMenu() {
   int pilih;
   printf("==============================\n");
@@ -29,10 +32,13 @@ int mainMenu() {
   return pilih;
 }
 
+void init() { procDB("daftar_merch.txt", _MERCHDB, &_MERCHQTY); }
+
 int main() {
   bool keepGoing = true;
   readUserFile();
   printUser();
+  init();
 
   while (keepGoing) {
     switch (mainMenu()) {
