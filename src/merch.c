@@ -1,10 +1,9 @@
+#include "DB.h"
 #include "fileProc.h"
+#include "pembayaran.h"
 #include "userData.h"
 #include "util.h"
 #include <stdio.h>
-
-Barang _MERCHDB[100];
-int _MERCHQTY = 0;
 
 int menuMerch() {
   int merchChoose;
@@ -25,7 +24,6 @@ int menuMerch() {
 int merch() {
   procDB("daftar_merch.txt", _MERCHDB, &_MERCHQTY);
   while (1) {
-
     switch (menuMerch()) {
     // case 1:
     //   topSales();
@@ -34,7 +32,16 @@ int merch() {
       listBarang(_MERCHDB, _MERCHQTY);
       break;
     case 3:
-      // pesan();
+      int id;
+      printf("Masukkan ID barang: ");
+      scanf("%d%*c", &id);
+      Barang *barangFind = searchBarang(id, _MERCHDB, _MERCHQTY);
+      if (barangFind == NULL) {
+        printf("Barang tidak ditemukan\n");
+        break;
+      }
+      printf("Nama barang: %s\n", (*barangFind).namaBarang);
+      printf("Harga barang: Rp%d\n", (*barangFind).hargaBarang);
       break;
     case 0:
       return 0;

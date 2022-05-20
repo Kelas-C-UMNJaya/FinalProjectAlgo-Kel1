@@ -5,4 +5,17 @@ typedef struct barang {
   char namaBarang[50];
   int hargaBarang;
 } Barang;
+
+typedef struct CartQueue {
+  Barang data;
+  struct CartQueue *next;
+} Cart;
+
+typedef struct User {
+  char nama[100];
+  unsigned long saldo;
+  Cart *cartFront, *cartBack;
+  int cartSize;
+} UserData;
+
 #endif

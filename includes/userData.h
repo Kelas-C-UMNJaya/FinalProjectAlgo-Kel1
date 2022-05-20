@@ -1,13 +1,7 @@
 #ifndef _USERDATA_H
 #define _USERDATA_H
+#include "DataTypes.h"
 #include "fileProc.h"
-
-typedef struct User {
-  char nama[100];
-  unsigned long saldo;
-  Barang cart[100];
-  int cartSize;
-} UserData;
 
 extern UserData _USERDATA;
 

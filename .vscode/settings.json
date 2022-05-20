@@ -2,6 +2,7 @@
   "cmake.configureOnOpen": false,
   "files.associations": {
     "util.h": "c",
-    "stdlib.h": "c"
+    "stdlib.h": "c",
+    "userdata.h": "c"
   }
 }

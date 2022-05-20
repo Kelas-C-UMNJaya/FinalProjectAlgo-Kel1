@@ -12,8 +12,13 @@ UserData createUser() {
   scanf("%[^\n]%*c", nama);
   strcpy(newUser.nama, nama);
   newUser.saldo = saldo;
-  newUser.cartSize = 0;
   return newUser;
+}
+
+void initCart(UserData *user) {
+  user->cartFront = NULL;
+  user->cartBack = NULL;
+  user->cartSize = 0;
 }
 
 void printUser() {
@@ -21,6 +26,28 @@ void printUser() {
   printf("Saldo: %lu\n", _USERDATA.saldo);
   printf("Cart Size: %d\n", _USERDATA.cartSize);
 }
+
+void addToCart(UserData *user, Barang data) {
+  Cart *newItem = (Cart *)malloc(sizeof(Cart));
+  newItem->next = NULL;
+  if (user->cartFront == NULL) {
+    user->cartFront = user->cartBack = newItem;
+  } else {
+    user->cartBack->next = newItem;
+    user->cartBack = newItem;
+  }
+  user->cartSize++;
+}
+
+void removeFrontCart(UserData *user) {
+  Cart *temp = user->cartFront;
+  user->cartFront = user->cartFront->next;
+  free(temp);
+  user->cartSize--;
+}
+
+void topup(unsigned long saldo) { _USERDATA.saldo += saldo; }
+void dedup(unsigned long saldo) { _USERDATA.saldo -= saldo; }
 
 void readUserFile() {
   FILE *fp = fopen("../data/user_data.txt", "r");
@@ -56,7 +83,7 @@ void readUserCart(UserData *user) {
   while (!feof(fp)) {
     struct barang newBarang;
     fscanf(fp, "%[^,],%d\n", newBarang.namaBarang, &newBarang.hargaBarang);
-    user->cart[i] = newBarang;
+    addToCart(user, newBarang);
     i++;
   }
   user->cartSize = i;
@@ -66,8 +93,10 @@ void readUserCart(UserData *user) {
 void writeUserCart(UserData user) {
   FILE *fp = fopen("../data/user_cart.txt", "w");
   int i;
-  for (i = 0; i < user.cartSize; i++) {
-    fprintf(fp, "%s,%d\n", user.cart[i].namaBarang, user.cart[i].hargaBarang);
+  Cart *temp = user.cartFront;
+  while (temp != NULL) {
+    fprintf(fp, "%s,%d\n", temp->data.namaBarang, temp->data.hargaBarang);
+    temp = temp->next;
   }
   fclose(fp);
 }
