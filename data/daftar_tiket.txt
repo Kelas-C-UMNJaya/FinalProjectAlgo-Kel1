@@ -1,10 +1,10 @@
-999,Patraiarki,150000
-487,Ayah Ikhlas Volume 2,150000
-576,Personal Branding,125000
-734,Bhinneka Tungal Tawa, 200000
-458,Ilucinati,350000
 236,Hip!,150000
-549,Ternyata Ini Sebabnya,350000
 443,Juru Bicara,250000
-786,Cerita Cintaku,350000
+458,Ilucinati,350000
+487,Ayah Ikhlas Volume 2,150000
+549,Ternyata Ini Sebabnya,350000
+576,Personal Branding,125000
 645,Valorant Coaching,250000
+734,Bhinneka Tungal Tawa,200000
+786,Cerita Cintaku,350000
+999,Patraiarki,150000
