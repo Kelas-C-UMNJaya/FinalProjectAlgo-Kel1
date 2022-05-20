@@ -23,7 +23,7 @@ int menuMerch() {
 }
 
 int merch() {
-  procDB("daftar_merch.txt", barang, &barang_jumlah);
+  procDB("daftar_merch.txt", _MERCHDB, &_MERCHQTY);
   while (1) {
 
     switch (menuMerch()) {
@@ -34,7 +34,7 @@ int merch() {
       listBarang(_MERCHDB, _MERCHQTY);
       break;
     case 3:
-      pesan();
+      // pesan();
       break;
     case 0:
       return 0;
