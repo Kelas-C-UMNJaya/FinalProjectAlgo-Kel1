@@ -22,7 +22,7 @@ int menuMerch() {
 }
 
 int merch() {
-  procDB("Daftar_Barang.txt", _MERCHDB, &_MERCHQTY);
+  procDB("daftar_merch.txt", _MERCHDB, &_MERCHQTY);
   while (1) {
     switch (menuMerch()) {
     // case 1:
