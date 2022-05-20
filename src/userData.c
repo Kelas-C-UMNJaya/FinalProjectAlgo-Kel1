@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+UserData _USERDATA;
 
 UserData createUser() {
   UserData newUser;
@@ -15,25 +16,25 @@ UserData createUser() {
   return newUser;
 }
 
-void printUser(UserData user) {
-  printf("Nama: %s\n", user.nama);
-  printf("Saldo: %lu\n", user.saldo);
-  printf("Cart Size: %d\n", user.cartSize);
+void printUser() {
+  printf("Nama: %s\n", _USERDATA.nama);
+  printf("Saldo: %lu\n", _USERDATA.saldo);
+  printf("Cart Size: %d\n", _USERDATA.cartSize);
 }
 
-UserData readUserFile() {
+void readUserFile() {
   FILE *fp = fopen("../data/user_data.txt", "r");
   if (fp == NULL) {
     printf("File tidak ditemukan, membuat file...\n");
     UserData newUser = createUser();
     writeUserFile(newUser);
-    return newUser;
+    _USERDATA = newUser;
   }
   UserData user;
   fscanf(fp, "%[^,],%lu\n", user.nama, &user.saldo);
   readUserCart(&user);
   fclose(fp);
-  return user;
+  _USERDATA = user;
 }
 
 void writeUserFile(UserData data) {

@@ -31,8 +31,8 @@ int mainMenu() {
 
 int main() {
   bool keepGoing = true;
-  UserData user = readUserFile();
-  printUser(user);
+  readUserFile();
+  printUser();
 
   while (keepGoing) {
     switch (mainMenu()) {
