@@ -1,7 +1,10 @@
 #include "userData.h"
+#include "util.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 UserData _USERDATA;
 
 UserData createUser() {
@@ -23,7 +26,7 @@ void initCart(UserData *user) {
 }
 
 void printUser() {
-  printf("Nama: %s\n", _USERDATA.nama);
+  printf("Halo, %s\n", _USERDATA.nama);
   printf("Saldo: %lu\n", _USERDATA.saldo);
   printf("Cart Size: %d\n", _USERDATA.cartSize);
 }
@@ -87,9 +90,9 @@ unsigned long dedup(unsigned long saldo) {
 }
 
 void readUserFile() {
-  FILE *fp = fopen("../data/user_data.txt", "r");
+  FILE *fp = fopen("./data/user/user_data.txt", "r");
   if (fp == NULL) {
-    printf("File tidak ditemukan, membuat file...\n");
+    printf("File user data tidak ditemukan, membuat file...\n");
     UserData newUser = createUser();
     writeUserFile(newUser);
     _USERDATA = newUser;
@@ -104,17 +107,17 @@ void readUserFile() {
 }
 
 void writeUserFile(UserData data) {
-  FILE *fp = fopen("../data/user_data.txt", "w");
+  FILE *fp = fopen("./data/user/user_data.txt", "w");
   fprintf(fp, "%s,%lu\n", data.nama, data.saldo);
   writeUserCart(data);
   fclose(fp);
 }
 
 void readUserCart(UserData *user) {
-  FILE *fp = fopen("../data/user_cart.txt", "r");
+  FILE *fp = fopen("./data/user/user_cart.txt", "r");
   char buffer[100];
   if (fp == NULL) {
-    printf("File tidak ditemukan, membuat file...\n");
+    printf("File user cart tidak ditemukan, membuat file...\n");
     writeUserCart(*user);
     exit(1);
   }
@@ -137,7 +140,7 @@ void readUserCart(UserData *user) {
 }
 
 void writeUserCart(UserData user) {
-  FILE *fp = fopen("../data/user_cart.txt", "w");
+  FILE *fp = fopen("./data/user/user_cart.txt", "w");
   int i;
   Cart *temp = user.cartFront;
   while (temp != NULL) {
