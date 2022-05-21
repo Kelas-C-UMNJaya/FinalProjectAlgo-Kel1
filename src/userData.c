@@ -97,6 +97,7 @@ void readUserFile() {
   }
   UserData user;
   fscanf(fp, "%[^,],%lu\n", user.nama, &user.saldo);
+  initCart(&user);
   readUserCart(&user);
   fclose(fp);
   _USERDATA = user;
@@ -117,7 +118,6 @@ void readUserCart(UserData *user) {
     exit(1);
   }
   int i = 0;
-  initCart(user);
   while (!feof(fp)) {
     struct barang newBarang;
     char buffer[100];

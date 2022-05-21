@@ -30,7 +30,8 @@ void writeDB(char *namaFile, Barang arr[], int jumlah) {
   FILE *fp = fopen(fileOut, "w");
 
   for (int i = 0; i < jumlah; i++) {
-    fprintf(fp, "%d,%s,%d\n", arr[i].id, arr[i].namaBarang, arr[i].hargaBarang);
+    fprintf(fp, "%d,%s,%d,%s\n", arr[i].id, arr[i].namaBarang,
+            arr[i].hargaBarang, arr[i].tanggal);
   }
   fclose(fp);
 }
@@ -44,8 +45,8 @@ void procDB(char *namaFile, Barang arr[], int *jumlah) {
   while (!feof(fp)) {
 
     Barang newBarang;
-    fscanf(fp, "%d,%[^,],%d\n", &newBarang.id, newBarang.namaBarang,
-           &newBarang.hargaBarang);
+    fscanf(fp, "%d,%[^,],%d,%s\n", &newBarang.id, newBarang.namaBarang,
+           &newBarang.hargaBarang, newBarang.tanggal);
     arr[i] = newBarang;
 
     i++;

@@ -11,4 +11,4 @@
 
 void prompt();
 void cls();
-void listBarang(Barang barang[], int jumlah);
+void listBarang(Barang barang[], int jumlah, int category);

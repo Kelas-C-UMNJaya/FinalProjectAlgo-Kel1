@@ -1,10 +1,10 @@
-334,Bhinneka Tungal Tawa,200000
-336,Hip!,150000
-343,Juru Bicara,250000
-345,Valorant Coaching,250000
-358,Ilucinati,350000
-376,Personal Branding,125000
-380,Ternyata Ini Sebabnya,350000
-386,Cerita Cintaku,350000
-387,Ayah Ikhlas Volume 2,150000
-399,Patraiarki,150000
+334,Bhinneka Tungal Tawa,200000,17-08-2022
+336,Hip!,150000,04-07-2022
+343,Juru Bicara,250000,15-12-2022
+345,Valorant Coaching,250000,20-05-2023
+358,Ilucinati,350000,23-08-2022
+376,Personal Branding,125000,10-10-2022
+380,Ternyata Ini Sebabnya,350000,04-11-2022
+386,Cerita Cintaku,350000,26-07-2022
+387,Ayah Ikhlas Volume 2,150000,25-06-2022
+399,Patraiarki,150000,30-10-2022

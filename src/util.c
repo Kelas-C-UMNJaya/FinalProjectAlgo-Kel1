@@ -19,29 +19,63 @@ void cls() {
   }
 }
 
-void listBarang(Barang barang[], int jumlah) {
+void listBarang(Barang barang[], int jumlah, int category) {
   int iterator;
   int start = 0;
   int user;
 
   while (1) {
-    puts("+======+=================================+=============+");
-    puts("|  ID  |           Nama Barang           |    Harga    |");
-    puts("|======+=================================+=============|");
+    if (category == 1) {
+      puts("+======+=================================+=============+");
+      puts("|  ID  |           Nama Barang           |    Harga    |");
+      puts("|======+=================================+=============|");
 
-    for (iterator = 0; iterator < 5; iterator++) {
-      if ((iterator + start) >= jumlah) {
-        break;
+      for (iterator = 0; iterator < 5; iterator++) {
+        if ((iterator + start) >= jumlah) {
+          break;
+        }
+        printf("| %-3d  | %-31s | Rp%-9d |\n", barang[iterator + start].id,
+               barang[iterator + start].namaBarang,
+               barang[iterator + start].hargaBarang);
       }
-      printf("| %-3d  | %-31s | Rp%-9d |\n", barang[iterator + start].id,
-             barang[iterator + start].namaBarang,
-             barang[iterator + start].hargaBarang);
+
+      puts("+======+=================================+=============+");
+      puts("|1. Next Page                                          |");
+      puts("|2. Previous Page                                      |");
+      puts("|0. Kembali                                            |");
+      puts("+======================================================+");
+
+    } else if (category == 2 || category == 3) {
+      puts("+======+=================================+=============+==========="
+           "=="
+           "=+");
+      puts("|  ID  |           Nama Barang           |    Harga    |    "
+           "Tanggal  "
+           " |");
+      puts("+======+=================================+=============+==========="
+           "=="
+           "=+");
+      for (iterator = 0; iterator < 5; iterator++) {
+        if ((iterator + start) >= jumlah) {
+          break;
+        }
+        printf("| %-3d  | %-31s | Rp%-9d |  %-12s|\n",
+               barang[iterator + start].id, barang[iterator + start].namaBarang,
+               barang[iterator + start].hargaBarang,
+               barang[iterator + start].tanggal);
+      }
+      printf(
+          "+======+=================================+=============+==========="
+          "===+\n");
+      puts("|1. Next Page                                                      "
+           "   |");
+      puts("|2. Previous Page                                                  "
+           "   |");
+      puts("|0. Kembali                                                        "
+           "   |");
+      printf("+================================================================"
+             "=====+\n");
     }
-    printf("+======+=================================+=============+\n");
-    puts("|1. Next Page                                          |");
-    puts("|2. Previous Page                                      |");
-    puts("|0. Kembali                                            |");
-    printf("+======================================================+\n");
     printf("Pilihan: ");
     scanf("%d%*c", &user);
 

@@ -23,6 +23,7 @@ int VOD_menu() {
 
 int VOD() {
   int keepGoing = 1;
+  int category = 2;
   procDB("daftar_vod.txt", _VODDB, &_VODQTY);
 
   while (keepGoing) {
@@ -31,7 +32,7 @@ int VOD() {
       //   VOD_trending();
       break;
     case 2:
-      listBarang(_VODDB, _VODQTY);
+      listBarang(_VODDB, _VODQTY, category);
       break;
     case 3:
       //   pembelian_VOD();

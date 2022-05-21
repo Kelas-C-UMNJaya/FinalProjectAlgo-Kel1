@@ -4,6 +4,7 @@ typedef struct barang {
   int id;
   char namaBarang[50];
   int hargaBarang;
+  char tanggal[11];
 } Barang;
 
 typedef struct CartQueue {
