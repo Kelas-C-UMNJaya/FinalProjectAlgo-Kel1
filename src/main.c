@@ -8,19 +8,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// CATATAN
-// Setiap menu (kecuali menu utama) memiliki menu-menu yang sama:
-// - List 10 event/barang yang lagi trending
-// - List semua barang/tiket
-// - Pesan barang/tiket
-// - Kembali ke menu utama
+DB _MERCH;
+DB _VOD;
+DB _TIKET;
 
-Barang _MERCHDB[100];
-int _MERCHQTY = 0;
-Barang _VODDB[100];
-int _VODQTY = 0;
-Barang _TIKETDB[100];
-int _TIKETQTY = 0;
+void init() {
+  procDB("daftar_merch.txt", &_MERCH);
+  procDB("daftar_vod.txt", &_VOD);
+  procDB("daftar_tiket.txt", &_TIKET);
+}
 
 int mainMenu() {
   int pilih;
@@ -39,13 +35,8 @@ int mainMenu() {
   return pilih;
 }
 
-void init() {
-  procDB("daftar_merch.txt", _MERCHDB, &_MERCHQTY);
-  procDB("daftar_vod.txt", _VODDB, &_VODQTY);
-  procDB("daftar_tiket.txt", _TIKETDB, &_TIKETQTY);
-}
-
 int main() {
+  cls();
   bool keepGoing = true;
   readUserFile();
   printUser();

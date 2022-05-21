@@ -36,7 +36,7 @@ void writeDB(char *namaFile, Barang arr[], int jumlah) {
   fclose(fp);
 }
 
-void procDB(char *namaFile, Barang arr[], int *jumlah) {
+void procDB(char *namaFile, DB *database) {
   int i = 0;
   char fileIn[100] = "../data/";
   strcat(fileIn, namaFile);
@@ -47,14 +47,14 @@ void procDB(char *namaFile, Barang arr[], int *jumlah) {
     Barang newBarang;
     fscanf(fp, "%d,%[^,],%d,%s\n", &newBarang.id, newBarang.namaBarang,
            &newBarang.hargaBarang, newBarang.tanggal);
-    arr[i] = newBarang;
+    database->db[i] = newBarang;
 
     i++;
   }
-  *jumlah = i;
-  if (!isSorted(arr, *jumlah)) {
-    sortDB(arr, *jumlah);
-    writeDB(namaFile, arr, *jumlah);
+  database->qty = i;
+  if (!isSorted(database->db, database->qty)) {
+    sortDB(database->db, database->qty);
+    writeDB(namaFile, database->db, database->qty);
   }
   fclose(fp);
 }

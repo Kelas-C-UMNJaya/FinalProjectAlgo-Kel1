@@ -25,17 +25,16 @@ int menuMerch() {
 int merch() {
   int id;
   int category = 1;
-  procDB("daftar_merch.txt", _MERCHDB, &_MERCHQTY);
   while (1) {
     switch (menuMerch()) {
     // case 1:
     //   topSales();
     //   break;
     case 2:
-      listBarang(_MERCHDB, _MERCHQTY, category);
+      listBarang(_MERCH.db, _MERCH.qty, category);
       break;
     case 3:
-      promptSearch(_MERCHDB, _MERCHQTY);
+      promptSearch(_MERCH.db, _MERCH.qty);
       break;
     case 0:
       return 0;

@@ -112,6 +112,7 @@ void writeUserFile(UserData data) {
 
 void readUserCart(UserData *user) {
   FILE *fp = fopen("../data/user_cart.txt", "r");
+  char buffer[100];
   if (fp == NULL) {
     printf("File tidak ditemukan, membuat file...\n");
     writeUserCart(*user);
@@ -120,7 +121,6 @@ void readUserCart(UserData *user) {
   int i = 0;
   while (!feof(fp)) {
     struct barang newBarang;
-    char buffer[100];
     fgets(buffer, 100, fp);
     if (strcmp(buffer, "") == 0) {
       printf("%s", buffer);
