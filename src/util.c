@@ -92,7 +92,7 @@ void listBarang(Barang barang[], int jumlah, int category) {
       break;
     case 2:
       start += 5;
-      if (start = jumlah + 5) {
+      if (start >= jumlah) {
         start = jumlah - 5;
       }
       break;

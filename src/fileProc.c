@@ -49,6 +49,13 @@ void writeDB(char *namaFile, Barang arr[], int jumlah) {
   fclose(fpOut);
 }
 
+void clearDB(DB *database) {
+  for (int i = 0; i < database->qty; i++) {
+    database->db[i] = (Barang){0, "", 0, ""};
+  }
+  database->qty = 0;
+}
+
 void procDB(char *namaFile, DB *database) {
   int i = 0;
   char fileIn[100] = "./data/barang/";
@@ -59,12 +66,11 @@ void procDB(char *namaFile, DB *database) {
     writeDB(namaFile, database->db, database->qty);
     fp = fopen(fileIn, "r");
   }
-  while (!feof(fp)) {
-    Barang newBarang;
-    fscanf(fp, "%d,%[^,],%d,%s\n", &newBarang.id, newBarang.namaBarang,
-           &newBarang.hargaBarang, newBarang.tanggal);
+  clearDB(database);
+  Barang newBarang;
+  while (fscanf(fp, "%d,%[^,],%d,%[^\n]\n", &newBarang.id, newBarang.namaBarang,
+                &newBarang.hargaBarang, newBarang.tanggal) != EOF) {
     database->db[i] = newBarang;
-
     i++;
   }
   database->qty = i;
