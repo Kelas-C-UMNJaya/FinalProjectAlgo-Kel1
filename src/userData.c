@@ -122,12 +122,20 @@ void readUserCart(UserData *user) {
     exit(1);
   }
   int i = 0;
+  int size;
+  if (fseek(fp, 0, SEEK_END) != 0) {
+    printf("Error!\n");
+    exit(1);
+  } else if ((size = ftell(fp)) == 0) {
+    printf("Cart kosong\n");
+    prompt();
+
+    return;
+  }
   while (!feof(fp)) {
     struct barang newBarang;
     fgets(buffer, 100, fp);
     if (strcmp(buffer, "") == 0) {
-      printf("%s", buffer);
-      printf("data is empty\n");
       break;
     }
     // fscanf(fp, "%[^,],%d\n", newBarang.namaBarang, &newBarang.hargaBarang);

@@ -24,7 +24,7 @@ void initDir() {
     mkdir("./data/user", 0777);
     return;
   }
-  printf("Directory data created\n");
+  printf("Directory data exists\n");
 }
 
 int isSorted(Barang barang[], int jumlah) {
