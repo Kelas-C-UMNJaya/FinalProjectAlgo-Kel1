@@ -41,8 +41,8 @@ void listBarang(Barang barang[], int jumlah, int category) {
       }
 
       puts("+======+=================================+=============+");
-      puts("|1. Next Page                                          |");
-      puts("|2. Previous Page                                      |");
+      puts("|1. Halaman Sebelumnya                                 |");
+      puts("|2. Halaman Selanjutnya                                |");
       puts("|3. Pesan Barang                                       |");
       puts("|0. Kembali                                            |");
       puts("+======================================================+");
@@ -69,9 +69,9 @@ void listBarang(Barang barang[], int jumlah, int category) {
       printf(
           "+======+=================================+=============+==========="
           "===+\n");
-      puts("|1. Next Page                                                      "
+      puts("|1. Halaman Sebelumnya                                             "
            "   |");
-      puts("|2. Previous Page                                                  "
+      puts("|2. Halaman Selanjutnya                                            "
            "   |");
       puts("|3. Pesan Barang                                                   "
            "   |");
@@ -85,15 +85,15 @@ void listBarang(Barang barang[], int jumlah, int category) {
 
     switch (user) {
     case 1:
-      start += 5;
-      if (start = jumlah + 5) {
-        start = jumlah - 5;
-      }
-      break;
-    case 2:
       start -= 5;
       if (start < 0) {
         start = 0;
+      }
+      break;
+    case 2:
+      start += 5;
+      if (start = jumlah + 5) {
+        start = jumlah - 5;
       }
       break;
     case 3:

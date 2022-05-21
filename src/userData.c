@@ -24,9 +24,11 @@ void initCart(UserData *user) {
 }
 
 void printUser() {
-  printf("Nama: %s\n", _USERDATA.nama);
-  printf("Saldo: %lu\n", _USERDATA.saldo);
-  printf("Cart Size: %d\n", _USERDATA.cartSize);
+  printf("+================================+\n");
+  printf("|Nama      :%-20s |\n", _USERDATA.nama);
+  printf("|Saldo     :%-20lu |\n", _USERDATA.saldo);
+  printf("|Cart Size :%-20d |\n", _USERDATA.cartSize);
+  printf("+================================+\n");
 }
 
 void addToCart(UserData *user, Barang data) {
