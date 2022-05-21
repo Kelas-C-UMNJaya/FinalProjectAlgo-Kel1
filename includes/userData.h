@@ -8,6 +8,7 @@ extern UserData _USERDATA;
 void readUserFile();
 void initCart(UserData *user);
 void printUser();
+unsigned long totalCart(UserData *user);
 void addToCart(UserData *user, Barang data);
 void printCart(UserData *user);
 void topup();

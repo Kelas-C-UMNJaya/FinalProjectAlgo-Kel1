@@ -8,6 +8,7 @@
 #  define CLEAR "cls"
 #elif defined(__linux__)
 #  define CLEAR "clear"
+#  define mkdire(dir, mode) mkdir(dir, mode)
 #  define PLATFORM_NAME "linux"
 #endif
 
