@@ -1,5 +1,6 @@
 #ifndef DATATYPES_H_
 #define DATATYPES_H_
+
 typedef struct barang {
   int id;
   char namaBarang[50];
@@ -18,5 +19,11 @@ typedef struct User {
   Cart *cartFront, *cartBack;
   int cartSize;
 } UserData;
+
+typedef struct {
+  Barang db[100];
+  Barang trending[10];
+  int qty;
+} DB;
 
 #endif

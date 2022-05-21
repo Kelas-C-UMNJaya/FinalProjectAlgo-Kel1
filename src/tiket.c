@@ -24,7 +24,6 @@ int tiket_menu() {
 int tiket() {
   int category = 3;
   int keepGoing = 1;
-  procDB("daftar_tiket.txt", _TIKETDB, &_TIKETQTY);
 
   while (keepGoing) {
     switch (tiket_menu()) {
@@ -32,7 +31,7 @@ int tiket() {
       //   event_trending();
       break;
     case 2:
-      listBarang(_TIKETDB, _TIKETQTY, category);
+      listBarang(_TIKET.db, _TIKET.qty, category);
       break;
     case 3:
       //   pembelian_tiket();

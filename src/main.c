@@ -1,5 +1,6 @@
 #include "DB.h"
 #include "VOD.h"
+#include "fileProc.h"
 #include "merch.h"
 #include "tiket.h"
 #include "userData.h"
@@ -8,19 +9,48 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// CATATAN
-// Setiap menu (kecuali menu utama) memiliki menu-menu yang sama:
-// - List 10 event/barang yang lagi trending
-// - List semua barang/tiket
-// - Pesan barang/tiket
-// - Kembali ke menu utama
+DB _MERCH = {.db = {{102, "Jaket", 250000},
+                    {104, "Topi", 25000},
+                    {106, "Gelang", 10000},
+                    {107, "Baju", 50000},
+                    {108, "Gelas", 25000},
+                    {109, "Dakimakura", 200000},
+                    {111, "Sepatu", 100000},
+                    {112, "Kacamata", 30000},
+                    {123, "Masker", 5000},
+                    {167, "Payung", 15000}},
+             .qty = 10};
 
-Barang _MERCHDB[100];
-int _MERCHQTY = 0;
-Barang _VODDB[100];
-int _VODQTY = 0;
-Barang _TIKETDB[100];
-int _TIKETQTY = 0;
+DB _VOD = {.db = {{202, "Spiderman", 100000, "22-05-2012"},
+                  {212, "Ben & Rivo", 100000, "12-25-2020"},
+                  {221, "Ben & Jefer", 100000, "30-05-2019"},
+                  {222, "Radit", 100000, "17-09-2018"},
+                  {234, "Ironman", 100000, "30-03-2010"},
+                  {253, "Github", 100000, "03-05-2020"},
+                  {256, "Patungan", 100000, "10-05-2020"},
+                  {271, "Captain America", 100000, "31-05-2019"},
+                  {281, "Hulk", 100000, "04-04-2020"},
+                  {298, "Avengers", 100000, "09-08-2019"}},
+           .qty = 10};
+
+DB _TIKET = {.db = {{334, "Bhinneka Tungal Tawa", 200000, "17-08-2022"},
+                    {336, "Hip!", 150000, "04-07-2022"},
+                    {343, "Juru Bicara", 250000, "15-12-2022"},
+                    {345, "Valorant Coaching", 250000, "20-05-2023"},
+                    {358, "Ilucinati", 350000, "23-08-2022"},
+                    {376, "Personal Branding", 125000, "10-10-2022"},
+                    {380, "Ternyata Ini Sebabnya", 350000, "04-11-2022"},
+                    {386, "Cerita Cintaku", 350000, "26-07-2022"},
+                    {387, "Ayah Ikhlas Volume 2", 150000, "25-06-2022"},
+                    {399, "Patraiarki", 150000, "30-10-2022"}},
+             .qty = 10};
+
+void init() {
+  initDir();
+  procDB("daftar_merch.txt", &_MERCH);
+  procDB("daftar_vod.txt", &_VOD);
+  procDB("daftar_tiket.txt", &_TIKET);
+}
 
 int mainMenu() {
   int pilih;
@@ -39,19 +69,14 @@ int mainMenu() {
   return pilih;
 }
 
-void init() {
-  procDB("daftar_merch.txt", _MERCHDB, &_MERCHQTY);
-  procDB("daftar_vod.txt", _VODDB, &_VODQTY);
-  procDB("daftar_tiket.txt", _TIKETDB, &_TIKETQTY);
-}
-
 int main() {
+  init();
   bool keepGoing = true;
   readUserFile();
-  printUser();
-  init();
+  cls();
 
   while (keepGoing) {
+    printUser();
     switch (mainMenu()) {
     case 1:
       tiket();
