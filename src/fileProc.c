@@ -1,4 +1,5 @@
 #include "fileProc.h"
+#include "util.h"
 #include <stdio.h>
 #include <string.h>
 #include <sys/stat.h>
@@ -18,10 +19,10 @@ void sortDB(Barang barang[], int jumlah) {
 }
 
 void initDir() {
-  if (!mkdir("./data", 0777)) {
+  if (!mkdire("./data", 0777)) {
     printf("Directory data doesn't exist, creating...\n");
-    mkdir("./data/barang", 0777);
-    mkdir("./data/user", 0777);
+    mkdire("./data/barang", 0777);
+    mkdire("./data/user", 0777);
     return;
   }
   printf("Directory data exists\n");

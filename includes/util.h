@@ -3,7 +3,7 @@
 #if defined(_WIN32) || defined(_WIN64)
 #  include <conio.h>
 #  include <windows.h>
-#  define mkdir(dir, mode) !(CreateDirectory(dir, NULL))
+#  define mkdire(dir, mode) !(CreateDirectory(dir, NULL))
 #  define PLATFORM_NAME "win"
 #  define CLEAR "cls"
 #elif defined(__linux__)
