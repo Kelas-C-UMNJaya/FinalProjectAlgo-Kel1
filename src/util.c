@@ -1,4 +1,5 @@
 #include "util.h"
+#include "pembayaran.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -6,7 +7,7 @@ void prompt() {
   if (PLATFORM_NAME == "win") {
     system("pause");
   } else {
-    printf("Press enter to continue...");
+    printf("Tekan Enter Untuk Melanjutkan...");
     getchar();
   }
 }
@@ -42,6 +43,7 @@ void listBarang(Barang barang[], int jumlah, int category) {
       puts("+======+=================================+=============+");
       puts("|1. Next Page                                          |");
       puts("|2. Previous Page                                      |");
+      puts("|3. Pesan Barang                                       |");
       puts("|0. Kembali                                            |");
       puts("+======================================================+");
 
@@ -71,6 +73,8 @@ void listBarang(Barang barang[], int jumlah, int category) {
            "   |");
       puts("|2. Previous Page                                                  "
            "   |");
+      puts("|3. Pesan Barang                                                   "
+           "   |");
       puts("|0. Kembali                                                        "
            "   |");
       printf("+================================================================"
@@ -91,6 +95,9 @@ void listBarang(Barang barang[], int jumlah, int category) {
       if (start < 0) {
         start = 0;
       }
+      break;
+    case 3:
+      promptSearch(barang, jumlah);
       break;
     case 0:
       return;

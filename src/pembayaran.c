@@ -1,5 +1,6 @@
 #include "pembayaran.h"
 #include "userData.h"
+#include "util.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -10,6 +11,8 @@ void promptSearch(Barang DB[], int qty) {
   Barang barangFind = searchBarang(id, DB, qty, &isFound);
   if (!isFound) {
     printf("Barang tidak ditemukan\n");
+    prompt();
+    return;
   }
   printf("Nama barang: %s\n", barangFind.namaBarang);
   printf("Harga barang: Rp%d\n", barangFind.hargaBarang);
@@ -19,6 +22,7 @@ void promptSearch(Barang DB[], int qty) {
   if (c == 'y') {
     addToCart(&_USERDATA, barangFind);
     printf("Barang telah berhasil ditambahkan ke keranjang!\n");
+    prompt();
   }
 }
 
@@ -40,4 +44,23 @@ Barang searchBarang(int id, Barang barang[], int jumlah, int *isFound) {
   *isFound = 0;
 }
 
-int bayar() {}
+void bayar(UserData *user, unsigned long total) {
+  printf("Total pembayaran: Rp%lu\n", total);
+  while ((long)user->saldo - (long)total < 0) {
+    printf("Saldo anda tidak mencukupi\n");
+    printf("Ingin Top Up? (y/n): ");
+    char c;
+    scanf("%c%*c", &c);
+    if (c == 'y') {
+      topup();
+    } else {
+      return;
+    }
+  }
+  dedup(total);
+  printf("Pembayaran Berhasil!\n");
+  printf("Saldo anda saat ini: %lu\n", user->saldo);
+  printf("Terima Kasih Telah Berbelanja!\n");
+  prompt();
+  printf("\n");
+}

@@ -1,4 +1,5 @@
 #include "userData.h"
+#include "pembayaran.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -32,18 +33,18 @@ void addToCart(UserData *user, Barang data) {
   Cart *newItem = (Cart *)malloc(sizeof(Cart));
   newItem->data = data;
   newItem->next = NULL;
-  while ((long)user->saldo - data.hargaBarang < 0) {
-    printf("Saldo anda tidak mencukupi\n");
-    printf("Ingin Top Up? (y/n): ");
-    char c;
-    scanf("%c%*c", &c);
-    if (c == 'y') {
-      topup();
-    } else {
-      return;
-    }
-  }
-  dedup(data.hargaBarang);
+  // while ((long)user->saldo - data.hargaBarang < 0) {
+  //   printf("Saldo anda tidak mencukupi\n");
+  //   printf("Ingin Top Up? (y/n): ");
+  //   char c;
+  //   scanf("%c%*c", &c);
+  //   if (c == 'y') {
+  //     topup();
+  //   } else {
+  //     return;
+  //   }
+  // }
+  // dedup(data.hargaBarang);
   if (user->cartFront == NULL) {
     user->cartFront = user->cartBack = newItem;
   } else {
@@ -60,18 +61,54 @@ void removeFrontCart(UserData *user) {
   user->cartSize--;
 }
 
+unsigned long totalCart(UserData *user) {
+  unsigned long total = 0;
+  Cart *temp = user->cartFront;
+  while (temp != NULL) {
+    total += temp->data.hargaBarang;
+    temp = temp->next;
+  }
+  // printf("Total: Rp%lu\n", total);
+  return total;
+}
+
 void printCart(UserData *user) {
+  int pilihan;
+  int keepgoing = 1;
+  unsigned long total = totalCart(user);
+
   Cart *temp = user->cartFront;
   // TODO cantikin printnya
-  printf("+================================+\n");
-  printf("|          Shopping Cart         |\n");
-  printf("+================================+\n");
-  while (temp != NULL) {
-    printf("ID: %d\n", temp->data.id);
-    printf("Nama: %s\n", temp->data.namaBarang);
-    printf("Harga: Rp%d\n", temp->data.hargaBarang);
+  while (keepgoing) {
     printf("+================================+\n");
-    temp = temp->next;
+    printf("|          Shopping Cart         |\n");
+    printf("+================================+\n");
+    while (temp != NULL) {
+      printf("|ID     : %-22d |\n", temp->data.id);
+      printf("|Nama   : %-22s |\n", temp->data.namaBarang);
+      printf("|Harga  : Rp%-20d |\n", temp->data.hargaBarang);
+      printf("+================================+\n");
+      temp = temp->next;
+    }
+    printf("|Total  : Rp%-20lu |\n", total);
+    printf("+================================+\n");
+    printf("|1. Bayar                        |\n");
+    printf("|0. Kembali                      |\n");
+    printf("+================================+\n");
+    printf("Pilihan: ");
+    scanf("%d%*c", &pilihan);
+
+    switch (pilihan) {
+    case 1:
+      bayar(&_USERDATA, total);
+      break;
+    case 0:
+      keepgoing = 0;
+      break;
+    default:
+      printf("Pilihan Tidak Valid\n");
+      break;
+    }
   }
 }
 
