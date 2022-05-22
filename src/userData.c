@@ -167,7 +167,6 @@ void readUserCart(UserData *user) {
     exit(1);
   } else if ((size = ftell(fp)) == 0) {
     printf("Cart kosong\n");
-    prompt();
 
     return;
   }
