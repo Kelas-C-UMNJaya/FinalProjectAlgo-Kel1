@@ -4,11 +4,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void promptSearch(Barang DB[], int qty) {
+Barang searchBarang(Node *root, int id, int *isFound) {
+  if (root == NULL) {
+    *isFound = 0;
+    return (Barang){0, "", 0, ""};
+  }
+  if (root->data.id == id) {
+    *isFound = 1;
+    return root->data;
+  } else if (root->data.id > id) {
+    return searchBarang(root->left, id, isFound);
+  } else {
+    return searchBarang(root->right, id, isFound);
+  }
+}
+void promptSearch(DB database) {
   int id, isFound;
   printf("Masukkan ID barang: ");
   scanf("%d%*c", &id);
-  Barang barangFind = searchBarang(id, DB, qty, &isFound);
+  Barang barangFind = searchBarang(database.binaryTree, id, &isFound);
   if (!isFound) {
     printf("Barang tidak ditemukan\n");
     prompt();
@@ -26,23 +40,23 @@ void promptSearch(Barang DB[], int qty) {
   }
 }
 
-Barang searchBarang(int id, Barang barang[], int jumlah, int *isFound) {
-  int low = 0;
-  int high = jumlah - 1;
-  int mid = (low + high) / 2;
-  while (low <= high) {
-    if (barang[mid].id == id) {
-      *isFound = 1;
-      return barang[mid];
-    } else if (barang[mid].id > id) {
-      high = mid - 1;
-    } else {
-      low = mid + 1;
-    }
-    mid = (low + high) / 2;
-  }
-  *isFound = 0;
-}
+// Barang searchBarang(int id, Barang barang[], int jumlah, int *isFound) {
+//   int low = 0;
+//   int high = jumlah - 1;
+//   int mid = (low + high) / 2;
+//   while (low <= high) {
+//     if (barang[mid].id == id) {
+//       *isFound = 1;
+//       return barang[mid];
+//     } else if (barang[mid].id > id) {
+//       high = mid - 1;
+//     } else {
+//       low = mid + 1;
+//     }
+//     mid = (low + high) / 2;
+//   }
+//   *isFound = 0;
+// }
 
 void bayar(UserData *user, unsigned long total) {
   printf("Total pembayaran: Rp%lu\n", total);

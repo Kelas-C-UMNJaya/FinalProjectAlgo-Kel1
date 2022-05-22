@@ -34,7 +34,7 @@ int merch() {
       listBarang(&_MERCH, category);
       break;
     case 3:
-      promptSearch(_MERCH.db, _MERCH.qty);
+      promptSearch(_MERCH);
       break;
     case 0:
       return 0;

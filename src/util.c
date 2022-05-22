@@ -93,7 +93,8 @@ void listBarang(DB *database, int category) {
   Barang barang[100];
   int jumlah = 0;
   int sortChoice = 0;
-  Node *treeRoot = database->binaryTree;
+  Node *treeRoot;
+  createTreeFromDB(&treeRoot, database, sortChoice);
   tree_Inorder(treeRoot, barang, &jumlah);
 
   while (1) {
@@ -171,7 +172,7 @@ void listBarang(DB *database, int category) {
       }
       break;
     case 3:
-      promptSearch(barang, jumlah);
+      promptSearch(*database);
       break;
     case 4:
       printf("Sorting berdasarkan: ");
