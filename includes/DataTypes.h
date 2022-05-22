@@ -1,6 +1,7 @@
 #ifndef DATATYPES_H_
 #define DATATYPES_H_
 
+#define MAX_TRENDING 5
 typedef struct barang {
   int id;
   char namaBarang[50];
@@ -26,7 +27,7 @@ typedef struct Node {
 } Node;
 typedef struct {
   Barang db[100];
-  Barang trending[10];
+  Barang trending[MAX_TRENDING];
   Node *binaryTree;
   int qty;
 } DB;

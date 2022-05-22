@@ -1,9 +1,11 @@
 #include "dbController.h"
 #include "util.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <time.h>
 
 // void sortDB(Barang barang[], int jumlah) {
 //   Barang temp;
@@ -58,6 +60,7 @@ void clearDB(DB *database) {
 
 void procDB(char *namaFile, DB *database) {
   int i = 0;
+  int j = 0;
   char fileIn[100] = "./data/barang/";
   strcat(fileIn, namaFile);
   FILE *fp = fopen(fileIn, "r");
@@ -70,6 +73,7 @@ void procDB(char *namaFile, DB *database) {
   clearDB(database);
   Barang newBarang;
   int scanResult;
+  srand(time(NULL));
   do {
     scanResult =
         fscanf(fp, "%d,%[^,],%d,%[^\n]\n", &newBarang.id, newBarang.namaBarang,
@@ -79,11 +83,14 @@ void procDB(char *namaFile, DB *database) {
         strcpy(newBarang.tanggal, "");
       }
       database->db[i] = newBarang;
+      if (rand() % 2 == 0 && j < 5) {
+        database->trending[j] = newBarang;
+      }
       i++;
     }
   } while (scanResult != EOF || scanResult > 3);
   database->qty = i;
-  createTreeFromDB(&database->binaryTree, database, 0);
+  createTreeFromDB(&database->binaryTree, database->db, database->qty, 0);
   // if (!isSorted(database->db, database->qty)) {
   // sortDB(database->db, database->qty);
   // writeDB(namaFile, database->db, database->qty);

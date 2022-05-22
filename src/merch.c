@@ -27,9 +27,9 @@ int merch() {
   int category = 1;
   while (1) {
     switch (menuMerch()) {
-    // case 1:
-    //   topSales();
-    //   break;
+    case 1:
+      listTrending(&_MERCH, category);
+      break;
     case 2:
       listBarang(&_MERCH, category);
       break;

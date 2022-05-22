@@ -79,9 +79,12 @@ void clearTree(Node **root) {
   }
 }
 
-void createTreeFromDB(Node **root, DB *database, int sortCategory) {
-  for (int i = 0; i < database->qty; i++) {
-    insertToTree(root, database->db[i], sortCategory);
+void createTreeFromDB(Node **root, Barang db[], int qty, int sortCategory) {
+  for (int i = 0; i < qty; i++) {
+    if (strcmp(db[i].namaBarang, "") == 0) {
+      break;
+    }
+    insertToTree(root, db[i], sortCategory);
   }
 }
 
@@ -94,74 +97,109 @@ void tree_Inorder(Node *root, Barang arr[], int *qty) {
   }
 }
 
+void printTabelBarang(Barang barang[], int jumlah, int category, int *start) {
+  int iterator = 0;
+  if (category == 1) {
+    puts("+======+=================================+=============+");
+    puts("|  ID  |           Nama Barang           |    Harga    |");
+    puts("|======+=================================+=============|");
+
+    for (iterator = 0; iterator < 5; iterator++) {
+      if ((iterator + (*start)) >= jumlah) {
+        break;
+      }
+      printf("| %-3d  | %-31s | Rp%-9d |\n", barang[iterator + (*start)].id,
+             barang[iterator + (*start)].namaBarang,
+             barang[iterator + (*start)].hargaBarang);
+    }
+    puts("|======+=================================+=============|");
+  } else if (category == 2 || category == 3) {
+    puts("+======+=================================+=============+============="
+         "=+");
+    puts("|  ID  |           Nama Barang           |    Harga    |    "
+         "Tanggal  "
+         " |");
+    puts("+======+=================================+=============+============="
+         "=+");
+    for (iterator = 0; iterator < 5; iterator++) {
+      if ((iterator + (*start)) >= jumlah) {
+        break;
+      }
+      printf("| %-3d  | %-31s | Rp%-9d |  %-12s|\n",
+             barang[iterator + (*start)].id,
+             barang[iterator + (*start)].namaBarang,
+             barang[iterator + (*start)].hargaBarang,
+             barang[iterator + (*start)].tanggal);
+    }
+    puts("+======+=================================+=============+============="
+         "=+");
+  }
+}
+
+void listTrending(DB *database, int category) {
+  int iterator, user;
+  int start = 0;
+  int jumlah = 0;
+  int sortChoice = 0;
+  Barang barang[MAX_TRENDING];
+  Node *treeRoot = NULL;
+  createTreeFromDB(&treeRoot, database->trending, MAX_TRENDING, sortChoice);
+  tree_Inorder(treeRoot, barang, &jumlah);
+
+  while (1) {
+    printTabelBarang(barang, jumlah, category, &start);
+    printf("\n+==========================+\n");
+    puts("|1. Pesan Barang           |");
+    puts("|2. Urutkan data           |");
+    puts("|0. Kembali                |");
+    printf("+==========================+\n");
+    printf("Pilihan: ");
+    scanf("%d%*c", &user);
+
+    switch (user) {
+    case 1:
+      promptSearch(*database);
+      break;
+    case 2:
+      printf("Sorting berdasarkan: \n");
+      printf("0) ID barang\n");
+      printf("1) Nama barang\n");
+      printf("2) Harga barang\n");
+      printf("Pilihan: ");
+      scanf("%d%*c", &sortChoice);
+      clearTree(&treeRoot);
+      jumlah = 0;
+      createTreeFromDB(&treeRoot, database->trending, MAX_TRENDING, sortChoice);
+      tree_Inorder(treeRoot, barang, &jumlah);
+      break;
+    case 0:
+      return;
+      break;
+    }
+    clearTree(&treeRoot);
+    cls();
+  }
+}
+
 void listBarang(DB *database, int category) {
   int iterator, user;
   int start = 0;
   int jumlah = 0;
   int sortChoice = 0;
   Barang barang[100];
-  Node *treeRoot;
-  createTreeFromDB(&treeRoot, database, sortChoice);
+  Node *treeRoot = NULL;
+  createTreeFromDB(&treeRoot, database->db, database->qty, sortChoice);
   tree_Inorder(treeRoot, barang, &jumlah);
 
   while (1) {
-    if (category == 1) {
-      puts("+======+=================================+=============+");
-      puts("|  ID  |           Nama Barang           |    Harga    |");
-      puts("|======+=================================+=============|");
-
-      for (iterator = 0; iterator < 5; iterator++) {
-        if ((iterator + start) >= jumlah) {
-          break;
-        }
-        printf("| %-3d  | %-31s | Rp%-9d |\n", barang[iterator + start].id,
-               barang[iterator + start].namaBarang,
-               barang[iterator + start].hargaBarang);
-      }
-
-      puts("+======+=================================+=============+");
-      puts("|1. Halaman Sebelumnya                                 |");
-      puts("|2. Halaman Selanjutnya                                |");
-      puts("|3. Pesan Barang                                       |");
-      puts("|4. Urutkan Data                                       |");
-      puts("|0. Kembali                                            |");
-      puts("+======================================================+");
-
-    } else if (category == 2 || category == 3) {
-      puts("+======+=================================+=============+==========="
-           "=="
-           "=+");
-      puts("|  ID  |           Nama Barang           |    Harga    |    "
-           "Tanggal  "
-           " |");
-      puts("+======+=================================+=============+==========="
-           "=="
-           "=+");
-      for (iterator = 0; iterator < 5; iterator++) {
-        if ((iterator + start) >= jumlah) {
-          break;
-        }
-        printf("| %-3d  | %-31s | Rp%-9d |  %-12s|\n",
-               barang[iterator + start].id, barang[iterator + start].namaBarang,
-               barang[iterator + start].hargaBarang,
-               barang[iterator + start].tanggal);
-      }
-      printf(
-          "+======+=================================+=============+==========="
-          "===+\n");
-      puts("|1. Halaman Sebelumnya                                             "
-           "   |");
-      puts("|2. Halaman Selanjutnya                                            "
-           "   |");
-      puts("|3. Pesan Barang                                                   "
-           "   |");
-      puts("|4. Urutkan data                                                   "
-           "   |");
-      puts("|0. Kembali                                                        "
-           "   |");
-      printf("+================================================================"
-             "=====+\n");
-    }
+    printTabelBarang(barang, jumlah, category, &start);
+    printf("\n+==========================+\n");
+    puts("|1. Halaman Sebelumnya     |");
+    puts("|2. Halaman Selanjutnya    |");
+    puts("|3. Pesan Barang           |");
+    puts("|4. Urutkan data           |");
+    puts("|0. Kembali                |");
+    printf("+==========================+\n");
     printf("Pilihan: ");
     scanf("%d%*c", &user);
 
@@ -190,7 +228,7 @@ void listBarang(DB *database, int category) {
       scanf("%d%*c", &sortChoice);
       clearTree(&treeRoot);
       jumlah = 0;
-      createTreeFromDB(&treeRoot, database, sortChoice);
+      createTreeFromDB(&treeRoot, database->db, database->qty, sortChoice);
       tree_Inorder(treeRoot, barang, &jumlah);
       break;
     case 0:

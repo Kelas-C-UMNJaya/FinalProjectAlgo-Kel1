@@ -15,6 +15,7 @@
 void prompt();
 void cls();
 void listBarang(DB *database, int category);
-void createTreeFromDB(Node **root, DB *database, int sortCategory);
+void listTrending(DB *database, int category);
+void createTreeFromDB(Node **root, Barang db[], int qty, int sortCategory);
 void tree_Inorder(Node *root, Barang arr[], int *qty);
 void clearTree(Node **root);
