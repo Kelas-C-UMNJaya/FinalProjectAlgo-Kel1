@@ -1,5 +1,6 @@
 #include "util.h"
 #include "pembayaran.h"
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -29,11 +30,15 @@ Node *createNode(Barang item) {
   return node;
 }
 
-// TODO bikin fungsi ini nerima kategori apa yang mau dibandingkan
+void stringToLower(char *str) {
+  int i;
+  for (i = 0; i < strlen(str); i++) {
+    str[i] = tolower(str[i]);
+  }
+}
+
 void insertToTree(Node **root, Barang item, int sortCategory) {
   char prevName[100], currName[100];
-  strcpy(prevName, item.namaBarang);
-  strcpy(currName, item.namaBarang);
 
   int compare;
   if (*root == NULL) {
@@ -44,7 +49,11 @@ void insertToTree(Node **root, Barang item, int sortCategory) {
       compare = item.id < (*root)->data.id ? 1 : 0;
       break;
     case 1:
-      compare = strcmp(item.namaBarang, (*root)->data.namaBarang) < 0 ? 1 : 0;
+      strcpy(prevName, item.namaBarang);
+      strcpy(currName, (*root)->data.namaBarang);
+      stringToLower(prevName);
+      stringToLower(currName);
+      compare = strcmp(prevName, currName) < 0 ? 1 : 0;
       break;
     case 2:
       compare = item.hargaBarang < (*root)->data.hargaBarang ? 1 : 0;
@@ -70,7 +79,6 @@ void clearTree(Node **root) {
   }
 }
 
-// TODO bikin fungsi ini nerima kategori apa yang mau dibandingkan
 void createTreeFromDB(Node **root, DB *database, int sortCategory) {
   for (int i = 0; i < database->qty; i++) {
     insertToTree(root, database->db[i], sortCategory);
@@ -87,12 +95,11 @@ void tree_Inorder(Node *root, Barang arr[], int *qty) {
 }
 
 void listBarang(DB *database, int category) {
-  int iterator;
+  int iterator, user;
   int start = 0;
-  int user;
-  Barang barang[100];
   int jumlah = 0;
   int sortChoice = 0;
+  Barang barang[100];
   Node *treeRoot;
   createTreeFromDB(&treeRoot, database, sortChoice);
   tree_Inorder(treeRoot, barang, &jumlah);
@@ -175,11 +182,11 @@ void listBarang(DB *database, int category) {
       promptSearch(*database);
       break;
     case 4:
-      printf("Sorting berdasarkan: ");
+      printf("Sorting berdasarkan: \n");
       printf("0) ID barang\n");
       printf("1) Nama barang\n");
       printf("2) Harga barang\n");
-      printf("Pilihan:");
+      printf("Pilihan: ");
       scanf("%d%*c", &sortChoice);
       clearTree(&treeRoot);
       jumlah = 0;

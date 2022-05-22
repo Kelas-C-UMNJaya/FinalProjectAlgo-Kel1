@@ -2,4 +2,4 @@
 
 // Barang searchBarang(int id, Barang barang[], int jumlah, int *isFound);
 void promptSearch(DB database);
-void bayar(UserData *user, unsigned long total);
+void bayar(UserData *user, unsigned long *total);

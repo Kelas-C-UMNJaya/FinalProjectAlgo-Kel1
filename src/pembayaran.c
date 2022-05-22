@@ -35,6 +35,7 @@ void promptSearch(DB database) {
   scanf("%c%*c", &c);
   if (c == 'y') {
     addToCart(&_USERDATA, barangFind);
+    writeUserCart(_USERDATA);
     printf("Barang telah berhasil ditambahkan ke keranjang!\n");
     prompt();
   }
@@ -58,9 +59,9 @@ void promptSearch(DB database) {
 //   *isFound = 0;
 // }
 
-void bayar(UserData *user, unsigned long total) {
-  printf("Total pembayaran: Rp%lu\n", total);
-  while ((long)user->saldo - (long)total < 0) {
+void bayar(UserData *user, unsigned long *total) {
+  printf("Total pembayaran: Rp%lu\n", *total);
+  while ((long)user->saldo - (long)(*total) < 0) {
     printf("Saldo anda tidak mencukupi\n");
     printf("Saldo anda saat ini: Rp%lu\n", user->saldo);
     printf("Ingin Top Up? (y/n): ");
@@ -72,7 +73,9 @@ void bayar(UserData *user, unsigned long total) {
       return;
     }
   }
-  dedup(total);
+  dedup(*total);
+  clearCart(user);
+  printf("\n");
   printf("Pembayaran Berhasil!\n");
   printf("Saldo anda saat ini: %lu\n", user->saldo);
   printf("Terima Kasih Telah Berbelanja!\n");

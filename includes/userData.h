@@ -16,4 +16,5 @@ unsigned long dedup(unsigned long saldo);
 void writeUserFile(UserData data);
 void readUserCart(UserData *user);
 void writeUserCart(UserData user);
+void clearCart(UserData *user);
 #endif
