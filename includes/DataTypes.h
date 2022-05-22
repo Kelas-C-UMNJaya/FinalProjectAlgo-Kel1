@@ -20,9 +20,14 @@ typedef struct User {
   int cartSize;
 } UserData;
 
+typedef struct Node {
+  Barang data;
+  struct Node *left, *right;
+} Node;
 typedef struct {
   Barang db[100];
   Barang trending[10];
+  Node *binaryTree;
   int qty;
 } DB;
 

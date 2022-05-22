@@ -1,5 +1,5 @@
 #include "DB.h"
-#include "fileProc.h"
+#include "dbController.h"
 #include "userData.h"
 #include "util.h"
 #include <stdio.h>
@@ -31,7 +31,7 @@ int tiket() {
       //   event_trending();
       break;
     case 2:
-      listBarang(_TIKET.db, _TIKET.qty, category);
+      listBarang(&_TIKET, category);
       break;
     case 3:
       //   pembelian_tiket();

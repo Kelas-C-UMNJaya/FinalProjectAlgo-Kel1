@@ -4,6 +4,6 @@
     "util.h": "c",
     "stdlib.h": "c",
     "userdata.h": "c",
-    "fileproc.h": "c"
+    "dbController.h": "c"
   }
 }

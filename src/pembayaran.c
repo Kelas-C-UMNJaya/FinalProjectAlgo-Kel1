@@ -48,6 +48,7 @@ void bayar(UserData *user, unsigned long total) {
   printf("Total pembayaran: Rp%lu\n", total);
   while ((long)user->saldo - (long)total < 0) {
     printf("Saldo anda tidak mencukupi\n");
+    printf("Saldo anda saat ini: Rp%lu\n", user->saldo);
     printf("Ingin Top Up? (y/n): ");
     char c;
     scanf("%c%*c", &c);

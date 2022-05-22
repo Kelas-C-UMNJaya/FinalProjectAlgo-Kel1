@@ -14,4 +14,7 @@
 
 void prompt();
 void cls();
-void listBarang(Barang barang[], int jumlah, int category);
+void listBarang(DB *database, int category);
+void createTreeFromDB(Node **root, DB *database, int sortCategory);
+void tree_Inorder(Node *root, Barang arr[], int *qty);
+void clearTree(Node **root);

@@ -1,22 +1,22 @@
-#include "fileProc.h"
+#include "dbController.h"
 #include "util.h"
 #include <stdio.h>
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 
-void sortDB(Barang barang[], int jumlah) {
-  Barang temp;
-  for (int i = 0; i < jumlah; i++) {
-    for (int j = i + 1; j < jumlah; j++) {
-      if (barang[i].id > barang[j].id) {
-        temp = barang[i];
-        barang[i] = barang[j];
-        barang[j] = temp;
-      }
-    }
-  }
-}
+// void sortDB(Barang barang[], int jumlah) {
+//   Barang temp;
+//   for (int i = 0; i < jumlah; i++) {
+//     for (int j = i + 1; j < jumlah; j++) {
+//       if (barang[i].id > barang[j].id) {
+//         temp = barang[i];
+//         barang[i] = barang[j];
+//         barang[j] = temp;
+//       }
+//     }
+//   }
+// }
 
 void initDir() {
   if (!mkdire("./data", 0777)) {
@@ -65,18 +65,28 @@ void procDB(char *namaFile, DB *database) {
     printf("File %s tidak ditemukan, membuat file...\n", namaFile);
     writeDB(namaFile, database->db, database->qty);
     fp = fopen(fileIn, "r");
+    // return;
   }
   clearDB(database);
   Barang newBarang;
-  while (fscanf(fp, "%d,%[^,],%d,%[^\n]\n", &newBarang.id, newBarang.namaBarang,
-                &newBarang.hargaBarang, newBarang.tanggal) != EOF) {
-    database->db[i] = newBarang;
-    i++;
-  }
+  int scanResult;
+  do {
+    scanResult =
+        fscanf(fp, "%d,%[^,],%d,%[^\n]\n", &newBarang.id, newBarang.namaBarang,
+               &newBarang.hargaBarang, newBarang.tanggal);
+    if (scanResult == 3 || scanResult == 4) {
+      if (scanResult == 3) {
+        strcpy(newBarang.tanggal, "");
+      }
+      database->db[i] = newBarang;
+      i++;
+    }
+  } while (scanResult != EOF || scanResult > 3);
   database->qty = i;
-  if (!isSorted(database->db, database->qty)) {
-    sortDB(database->db, database->qty);
-    writeDB(namaFile, database->db, database->qty);
-  }
+  createTreeFromDB(&database->binaryTree, database, 0);
+  // if (!isSorted(database->db, database->qty)) {
+  // sortDB(database->db, database->qty);
+  // writeDB(namaFile, database->db, database->qty);
+  // }
   fclose(fp);
 }

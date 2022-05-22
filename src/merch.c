@@ -1,5 +1,5 @@
 #include "DB.h"
-#include "fileProc.h"
+#include "dbController.h"
 #include "pembayaran.h"
 #include "userData.h"
 #include "util.h"
@@ -31,7 +31,7 @@ int merch() {
     //   topSales();
     //   break;
     case 2:
-      listBarang(_MERCH.db, _MERCH.qty, category);
+      listBarang(&_MERCH, category);
       break;
     case 3:
       promptSearch(_MERCH.db, _MERCH.qty);

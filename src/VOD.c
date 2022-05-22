@@ -1,5 +1,5 @@
 #include "DB.h"
-#include "fileProc.h"
+#include "dbController.h"
 #include "userData.h"
 #include "util.h"
 #include <stdio.h>
@@ -31,7 +31,7 @@ int VOD() {
       //   VOD_trending();
       break;
     case 2:
-      listBarang(_VOD.db, _VOD.qty, category);
+      listBarang(&_VOD, category);
       break;
     case 3:
       //   pembelian_VOD();
