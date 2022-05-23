@@ -69,7 +69,6 @@ void removeItemFromCart(UserData *user, int id) {
         prev->next = curr->next;
         free(curr);
         user->cartSize--;
-        
       }
       printf("\n");
       printf("+================================+\n");
@@ -119,7 +118,8 @@ void nota(UserData *user) {
   printf("|          Nama Barang          ||    Harga Barang   |\n");
   printf("+====================================================+\n");
   while (temp != NULL) {
-    printf("| %-29s ||  Rp%-14d |\n", temp->data.namaBarang, temp->data.hargaBarang);
+    printf("| %-29s ||  Rp%-14d |\n", temp->data.namaBarang,
+           temp->data.hargaBarang);
     // printf("|Rp%-20d |\n", temp->data.hargaBarang);
     temp = temp->next;
   }
@@ -134,7 +134,7 @@ void nota(UserData *user) {
 void printCart(UserData *user) {
   int pilihan, idHapus;
   int keepgoing = 1;
-  
+
   // unsigned long total = totalCart(user);
 
   Cart *temp = user->cartFront;
@@ -174,6 +174,7 @@ void printCart(UserData *user) {
       printf("Pilihan Tidak Valid\n");
       break;
     }
+    temp = user->cartFront;
   }
 }
 

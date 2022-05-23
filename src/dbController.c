@@ -83,7 +83,7 @@ void procDB(char *namaFile, DB *database) {
         strcpy(newBarang.tanggal, "");
       }
       database->db[i] = newBarang;
-      if (rand() % 2 == 0 && j <= 5) {
+      if (rand() % 2 == 0 && j < 5) {
         database->trending[j] = newBarang;
         j++;
       }

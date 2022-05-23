@@ -97,6 +97,8 @@ int main() {
     case 0:
       keepGoing = false;
       break;
+    case 69:
+      // TODO About Us
     default:
       printf("Pilihan Tidak Valid\n");
       prompt();

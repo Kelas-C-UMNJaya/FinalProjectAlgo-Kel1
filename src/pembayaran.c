@@ -82,6 +82,7 @@ void bayar(UserData *user, unsigned long *total) {
     if (c == 'y') {
       topup();
     } else {
+      cls();
       return;
     }
   }
@@ -93,6 +94,6 @@ void bayar(UserData *user, unsigned long *total) {
   printf("Saldo anda saat ini: %lu\n", user->saldo);
   // printf("Terima Kasih Telah Berbelanja!\n");
   // prompt();
-  
+
   printf("\n");
 }
