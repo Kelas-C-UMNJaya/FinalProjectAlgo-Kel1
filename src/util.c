@@ -138,6 +138,21 @@ void printTabelBarang(Barang barang[], int jumlah, int category, int *start) {
   }
 }
 
+void aboutUs() {
+  cls();
+  puts("+============================================+");
+  puts("|               The Creator                  |");
+  puts("+============================================+");
+  puts("| 1. Rivo Juicer Wowor        (00000059635)  |");
+  puts("| 2. Christian Ivan Wibowo    (00000058450)  |");
+  puts("| 3. Jefer Setiawan           (00000059297)  |");
+  puts("| 4. Areta Escalonia Candra   (00000057872)  |");
+  puts("+============================================+");
+  printf("\n");
+  prompt();
+  return;
+}
+
 void listTrending(DB *database, int category) {
   int iterator, user;
   int start = 0;

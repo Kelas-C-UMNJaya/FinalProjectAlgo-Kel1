@@ -17,5 +17,6 @@ void writeUserFile(UserData data);
 void readUserCart(UserData *user);
 void writeUserCart(UserData user);
 void clearCart(UserData *user);
-void nota(UserData *user);
+void printNota(UserData *user);
+void writeNota(UserData *user);
 #endif

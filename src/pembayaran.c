@@ -53,26 +53,8 @@ void promptSearch(DB database) {
   }
 }
 
-// Barang searchBarang(int id, Barang barang[], int jumlah, int *isFound) {
-//   int low = 0;
-//   int high = jumlah - 1;
-//   int mid = (low + high) / 2;
-//   while (low <= high) {
-//     if (barang[mid].id == id) {
-//       *isFound = 1;
-//       return barang[mid];
-//     } else if (barang[mid].id > id) {
-//       high = mid - 1;
-//     } else {
-//       low = mid + 1;
-//     }
-//     mid = (low + high) / 2;
-//   }
-//   *isFound = 0;
-// }
-
 void bayar(UserData *user, unsigned long *total) {
-  printf("Total pembayaran: Rp%lu\n", *total);
+  printf("\nTotal pembayaran: Rp%lu\n", *total);
   while ((long)user->saldo - (long)(*total) < 0) {
     printf("Saldo anda tidak mencukupi\n");
     printf("Saldo anda saat ini: Rp%lu\n", user->saldo);
@@ -87,8 +69,11 @@ void bayar(UserData *user, unsigned long *total) {
     }
   }
   dedup(*total);
-  nota(&_USERDATA);
+  printNota(&_USERDATA);
+  writeNota(&_USERDATA);
   clearCart(user);
+  prompt();
+
   printf("\n");
   printf("Pembayaran Berhasil!\n");
   printf("Saldo anda saat ini: %lu\n", user->saldo);

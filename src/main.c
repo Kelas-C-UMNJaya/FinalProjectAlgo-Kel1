@@ -57,6 +57,7 @@ void init() {
 
 int mainMenu() {
   int pilih;
+  cls();
   printf("+================================+\n");
   printf("|            Main Menu           |\n");
   printf("+================================+\n");
@@ -98,7 +99,7 @@ int main() {
       keepGoing = false;
       break;
     case 69:
-      // TODO About Us
+      aboutUs();
     default:
       printf("Pilihan Tidak Valid\n");
       prompt();

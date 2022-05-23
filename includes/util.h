@@ -19,3 +19,4 @@ void listTrending(DB *database, int category);
 void createTreeFromDB(Node **root, Barang db[], int qty, int sortCategory);
 void tree_Inorder(Node *root, Barang arr[], int *qty);
 void clearTree(Node **root);
+void aboutUs();

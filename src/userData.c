@@ -6,6 +6,7 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <time.h>
 UserData _USERDATA;
 
 UserData createUser() {
@@ -27,6 +28,7 @@ void initCart(UserData *user) {
 }
 
 void printUser() {
+  cls();
   printf("+================================+\n");
   printf("|Halo, %-25s |\n", _USERDATA.nama);
   printf("|Saldo     : %-19lu |\n", _USERDATA.saldo);
@@ -108,7 +110,7 @@ unsigned long totalCart(UserData *user) {
   return total;
 }
 
-void nota(UserData *user) {
+void printNota(UserData *user) {
   Cart *temp = user->cartFront;
   unsigned long total = totalCart(user);
 
@@ -128,7 +130,41 @@ void nota(UserData *user) {
   printf("+====================================================+\n");
   printf("|            Terima Kasih Telah Berbelanja!          |\n");
   printf("+====================================================+\n");
-  prompt();
+}
+
+void writeNota(UserData *user) {
+  Cart *temp = user->cartFront;
+  char date[100];
+  time_t now = time(NULL);
+  struct tm *t = localtime(&now);
+
+  strftime(date, 100, "%d%m%Y-%H%M%S", t);
+  strcat(date, "-nota.txt");
+  unsigned long total = totalCart(user);
+  FILE *file = fopen(date, "w");
+  fprintf(file,
+          "+====================================================+\n"
+          "|                         U-Tix                      |\n"
+          "+====================================================+\n"
+          "| Nama Pelanggan: %-34s |\n",
+          user->nama);
+  fprintf(file, "+====================================================+\n"
+                "|          Nama Barang          ||    Harga Barang   |\n"
+                "+====================================================+\n");
+  while (temp != NULL) {
+    fprintf(file, "| %-29s ||  Rp%-14d |\n", temp->data.namaBarang,
+            temp->data.hargaBarang);
+    // printf("|Rp%-20d |\n", temp->data.hargaBarang);
+    temp = temp->next;
+  }
+  fprintf(file,
+          "+====================================================+\n"
+          "|             Total             ||  Rp%-12lu   |\n"
+          "+====================================================+\n"
+          "|            Terima Kasih Telah Berbelanja!          |\n"
+          "+====================================================+\n",
+          total);
+  fclose(file);
 }
 
 void printCart(UserData *user) {
@@ -179,7 +215,7 @@ void printCart(UserData *user) {
 }
 
 void topup() {
-  printf("Masukkan jumlah top up: ");
+  printf("\nMasukkan jumlah top up: ");
   unsigned long topUp;
   scanf("%lu%*c", &topUp);
   _USERDATA.saldo += topUp;
