@@ -7,6 +7,7 @@
 
 int menuMerch() {
   int merchChoose;
+  cls();
   printf("+================================+\n");
   printf("|              Merch             |\n");
   printf("+================================+\n");

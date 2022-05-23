@@ -3,9 +3,11 @@
 #include "userData.h"
 #include "util.h"
 #include <stdio.h>
+#include "pembayaran.h"
 
 int VOD_menu() {
   int VODChoose;
+  cls();
   printf("+================================+\n");
   printf("|               VOD              |\n");
   printf("+================================+\n");
@@ -28,13 +30,13 @@ int VOD() {
   while (keepGoing) {
     switch (VOD_menu()) {
     case 1:
-      //   VOD_trending();
+      listTrending(&_VOD, category);
       break;
     case 2:
       listBarang(&_VOD, category);
       break;
     case 3:
-      //   pembelian_VOD();
+      promptSearch(_MERCH);
       break;
     case 0:
       keepGoing = 0;

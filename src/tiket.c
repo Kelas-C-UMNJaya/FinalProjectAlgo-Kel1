@@ -3,9 +3,11 @@
 #include "userData.h"
 #include "util.h"
 #include <stdio.h>
+#include "pembayaran.h"
 
 int tiket_menu() {
   int tiketChoose;
+  cls();
   printf("+================================+\n");
   printf("|              Tiket             |\n");
   printf("+================================+\n");
@@ -28,13 +30,13 @@ int tiket() {
   while (keepGoing) {
     switch (tiket_menu()) {
     case 1:
-      //   event_trending();
+      listTrending(&_TIKET, category);
       break;
     case 2:
       listBarang(&_TIKET, category);
       break;
     case 3:
-      //   pembelian_tiket();
+      promptSearch(_MERCH);
       break;
     case 0:
       keepGoing = 0;

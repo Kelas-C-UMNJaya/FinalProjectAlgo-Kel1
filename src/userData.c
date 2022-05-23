@@ -69,12 +69,25 @@ void removeItemFromCart(UserData *user, int id) {
         prev->next = curr->next;
         free(curr);
         user->cartSize--;
+        
       }
+      printf("\n");
+      printf("+================================+\n");
+      printf("|     Barang Berhasil Dihapus    |\n");
+      printf("+================================+\n");
+      prompt();
+      cls();
       return;
     }
     prev = curr;
     curr = curr->next;
   }
+  printf("\n");
+  printf("+================================+\n");
+  printf("|       Item Tidak Ditemukan     |\n");
+  printf("+================================+\n");
+  prompt();
+  cls();
 }
 
 void clearCart(UserData *user) {
@@ -96,13 +109,37 @@ unsigned long totalCart(UserData *user) {
   return total;
 }
 
-void printCart(UserData *user) {
-  int pilihan;
-  int keepgoing = 1;
+void nota(UserData *user) {
+  Cart *temp = user->cartFront;
   unsigned long total = totalCart(user);
+
+  printf("+====================================================+\n");
+  printf("|                         U-Tix                      |\n");
+  printf("+====================================================+\n");
+  printf("|          Nama Barang          ||    Harga Barang   |\n");
+  printf("+====================================================+\n");
+  while (temp != NULL) {
+    printf("| %-29s ||  Rp%-14d |\n", temp->data.namaBarang, temp->data.hargaBarang);
+    // printf("|Rp%-20d |\n", temp->data.hargaBarang);
+    temp = temp->next;
+  }
+  printf("+====================================================+\n");
+  printf("|             Total             ||  Rp%-12lu   |\n", total);
+  printf("+====================================================+\n");
+  printf("|            Terima Kasih Telah Berbelanja!          |\n");
+  printf("+====================================================+\n");
+  prompt();
+}
+
+void printCart(UserData *user) {
+  int pilihan, idHapus;
+  int keepgoing = 1;
+  
+  // unsigned long total = totalCart(user);
 
   Cart *temp = user->cartFront;
   while (keepgoing) {
+    unsigned long total = totalCart(user);
     printf("+================================+\n");
     printf("|          Shopping Cart         |\n");
     printf("+================================+\n");
@@ -116,6 +153,7 @@ void printCart(UserData *user) {
     printf("|Total  : Rp%-20lu |\n", total);
     printf("+================================+\n");
     printf("|1. Bayar                        |\n");
+    printf("|2. Hapus By ID                  |\n");
     printf("|0. Kembali                      |\n");
     printf("+================================+\n");
     printf("Pilihan: ");
@@ -125,6 +163,10 @@ void printCart(UserData *user) {
     case 1:
       bayar(&_USERDATA, &total);
       break;
+    case 2:
+      printf("Masukkan ID barang yang ingin dihapus: ");
+      scanf("%d%*c", &idHapus);
+      removeItemFromCart(user, idHapus);
     case 0:
       keepgoing = 0;
       break;

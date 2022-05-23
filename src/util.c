@@ -45,19 +45,21 @@ void insertToTree(Node **root, Barang item, int sortCategory) {
     *root = createNode(item);
   } else {
     switch (sortCategory) {
-    case 0:
+    case 1:
       compare = item.id < (*root)->data.id ? 1 : 0;
       break;
-    case 1:
+    case 2:
       strcpy(prevName, item.namaBarang);
       strcpy(currName, (*root)->data.namaBarang);
       stringToLower(prevName);
       stringToLower(currName);
       compare = strcmp(prevName, currName) < 0 ? 1 : 0;
       break;
-    case 2:
+    case 3:
       compare = item.hargaBarang < (*root)->data.hargaBarang ? 1 : 0;
       break;
+    case 4:
+      return;
     default:
       compare = item.id < (*root)->data.id ? 1 : 0;
       break;
@@ -102,7 +104,7 @@ void printTabelBarang(Barang barang[], int jumlah, int category, int *start) {
   if (category == 1) {
     puts("+======+=================================+=============+");
     puts("|  ID  |           Nama Barang           |    Harga    |");
-    puts("|======+=================================+=============|");
+    puts("+======+=================================+=============+");
 
     for (iterator = 0; iterator < 5; iterator++) {
       if ((iterator + (*start)) >= jumlah) {
@@ -112,7 +114,7 @@ void printTabelBarang(Barang barang[], int jumlah, int category, int *start) {
              barang[iterator + (*start)].namaBarang,
              barang[iterator + (*start)].hargaBarang);
     }
-    puts("|======+=================================+=============|");
+    puts("+======+=================================+=============+");
   } else if (category == 2 || category == 3) {
     puts("+======+=================================+=============+============="
          "=+");
@@ -161,10 +163,13 @@ void listTrending(DB *database, int category) {
       promptSearch(*database);
       break;
     case 2:
-      printf("Sorting berdasarkan: \n");
-      printf("0) ID barang\n");
-      printf("1) Nama barang\n");
-      printf("2) Harga barang\n");
+      printf("+==========================+\n");
+      printf("|Sorting berdasarkan:      |\n");
+      printf("|1) ID barang              |\n");
+      printf("|2) Nama barang            |\n");
+      printf("|3) Harga barang           |\n");
+      printf("|0) Kembali                |\n");
+      printf("+==========================+\n");
       printf("Pilihan: ");
       scanf("%d%*c", &sortChoice);
       clearTree(&treeRoot);
@@ -220,10 +225,13 @@ void listBarang(DB *database, int category) {
       promptSearch(*database);
       break;
     case 4:
-      printf("Sorting berdasarkan: \n");
-      printf("0) ID barang\n");
-      printf("1) Nama barang\n");
-      printf("2) Harga barang\n");
+      printf("+==========================+\n");
+      printf("|Sorting berdasarkan:      |\n");
+      printf("|1) ID barang              |\n");
+      printf("|2) Nama barang            |\n");
+      printf("|3) Harga barang           |\n");
+      printf("|0) Kembali                |\n");
+      printf("+==========================+\n");
       printf("Pilihan: ");
       scanf("%d%*c", &sortChoice);
       clearTree(&treeRoot);

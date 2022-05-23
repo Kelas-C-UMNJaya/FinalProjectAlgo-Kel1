@@ -24,19 +24,31 @@ void promptSearch(DB database) {
   scanf("%d%*c", &id);
   Barang barangFind = searchBarang(database.binaryTree, id, &isFound);
   if (!isFound) {
-    printf("Barang tidak ditemukan\n");
+    printf("\n");
+    printf("+============================================+\n");
+    printf("|           Barang tidak ditemukan           |\n");
+    printf("+============================================+\n");
+    printf("\n");
     prompt();
     return;
   }
-  printf("Nama barang: %s\n", barangFind.namaBarang);
-  printf("Harga barang: Rp%d\n", barangFind.hargaBarang);
+  printf("\n");
+  printf("+============================================+\n");
+  printf("| Nama barang  : %-28s|\n", barangFind.namaBarang);
+  printf("| Harga barang : Rp%-26d|\n", barangFind.hargaBarang);
+  printf("+============================================+\n");
   printf("Tambahkan ke keranjang? (y/n) ");
+
   char c;
   scanf("%c%*c", &c);
   if (c == 'y') {
     addToCart(&_USERDATA, barangFind);
     writeUserCart(_USERDATA);
-    printf("Barang telah berhasil ditambahkan ke keranjang!\n");
+    printf("\n");
+    printf("+============================================+\n");
+    printf("|   Barang telah ditambahkan ke keranjang!   |\n");
+    printf("+============================================+\n");
+    printf("\n");
     prompt();
   }
 }
@@ -74,11 +86,13 @@ void bayar(UserData *user, unsigned long *total) {
     }
   }
   dedup(*total);
+  nota(&_USERDATA);
   clearCart(user);
   printf("\n");
   printf("Pembayaran Berhasil!\n");
   printf("Saldo anda saat ini: %lu\n", user->saldo);
-  printf("Terima Kasih Telah Berbelanja!\n");
-  prompt();
+  // printf("Terima Kasih Telah Berbelanja!\n");
+  // prompt();
+  
   printf("\n");
 }

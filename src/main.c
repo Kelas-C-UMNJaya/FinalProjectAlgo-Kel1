@@ -100,6 +100,7 @@ int main() {
     default:
       printf("Pilihan Tidak Valid\n");
       prompt();
+      printf("\n");
       break;
     }
   }
