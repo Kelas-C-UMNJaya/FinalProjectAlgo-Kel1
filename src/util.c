@@ -150,6 +150,7 @@ void aboutUs() {
   puts("+============================================+");
   printf("\n");
   prompt();
+  cls();
   return;
 }
 
@@ -187,6 +188,13 @@ void listTrending(DB *database, int category) {
       printf("+==========================+\n");
       printf("Pilihan: ");
       scanf("%d%*c", &sortChoice);
+      if (sortChoice < 0) {
+        break;
+      } else if (sortChoice > 3 || sortChoice < 0) {
+        printf("Pilihan tidak ditemukan\n");
+        prompt();
+        break;
+      }
       clearTree(&treeRoot);
       jumlah = 0;
       createTreeFromDB(&treeRoot, database->trending, MAX_TRENDING, sortChoice);
@@ -194,6 +202,9 @@ void listTrending(DB *database, int category) {
       break;
     case 0:
       return;
+      break;
+    default:
+      printf("Pilihan tidak ditemukan\n");
       break;
     }
     clearTree(&treeRoot);
@@ -249,6 +260,13 @@ void listBarang(DB *database, int category) {
       printf("+==========================+\n");
       printf("Pilihan: ");
       scanf("%d%*c", &sortChoice);
+      if (sortChoice < 0) {
+        break;
+      } else if (sortChoice > 3 || sortChoice < 0) {
+        printf("Pilihan tidak ditemukan\n");
+        prompt();
+        break;
+      }
       clearTree(&treeRoot);
       jumlah = 0;
       createTreeFromDB(&treeRoot, database->db, database->qty, sortChoice);
@@ -256,6 +274,9 @@ void listBarang(DB *database, int category) {
       break;
     case 0:
       return;
+      break;
+    default:
+      printf("Pilihan tidak ditemukan\n");
       break;
     }
     clearTree(&treeRoot);

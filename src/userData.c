@@ -114,7 +114,7 @@ void printNota(UserData *user) {
   unsigned long total = totalCart(user);
 
   printf("+====================================================+\n");
-  printf("|                         U-Tix                      |\n");
+  printf("|                      Ticket.c                      |\n");
   printf("+====================================================+\n");
   printf("|          Nama Barang          ||    Harga Barang   |\n");
   printf("+====================================================+\n");
@@ -143,7 +143,7 @@ void writeNota(UserData *user) {
   FILE *file = fopen(date, "w");
   fprintf(file,
           "+====================================================+\n"
-          "|                         U-Tix                      |\n"
+          "|                      Ticket.c                      |\n"
           "+====================================================+\n"
           "| Nama Pelanggan: %-34s |\n",
           user->nama);
@@ -174,6 +174,8 @@ void printCart(UserData *user) {
 
   Cart *temp = user->cartFront;
   while (keepgoing) {
+    cls();
+    printUser();
     unsigned long total = totalCart(user);
     printf("+================================+\n");
     printf("|          Shopping Cart         |\n");
@@ -210,6 +212,7 @@ void printCart(UserData *user) {
       scanf("%d%*c", &idHapus);
       removeItemFromCart(user, idHapus);
     case 0:
+      cls();
       keepgoing = 0;
       break;
     default:
@@ -236,7 +239,7 @@ unsigned long dedup(unsigned long saldo) {
 void menuGantiData() {
   int menu;
   while (1) {
-  printUser();
+    printUser();
     puts("+=======================+");
     puts("|  Ganti Data Pengguna  |");
     puts("+=======================+");

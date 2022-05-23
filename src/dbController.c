@@ -7,19 +7,6 @@
 #include <sys/types.h>
 #include <time.h>
 
-// void sortDB(Barang barang[], int jumlah) {
-//   Barang temp;
-//   for (int i = 0; i < jumlah; i++) {
-//     for (int j = i + 1; j < jumlah; j++) {
-//       if (barang[i].id > barang[j].id) {
-//         temp = barang[i];
-//         barang[i] = barang[j];
-//         barang[j] = temp;
-//       }
-//     }
-//   }
-// }
-
 void initDir() {
   if (!mkdire("./data", 0777)) {
     printf("Directory data doesn't exist, creating...\n");
@@ -68,7 +55,6 @@ void procDB(char *namaFile, DB *database) {
     printf("File %s tidak ditemukan, membuat file...\n", namaFile);
     writeDB(namaFile, database->db, database->qty);
     fp = fopen(fileIn, "r");
-    // return;
   }
   clearDB(database);
   Barang newBarang;
@@ -92,9 +78,6 @@ void procDB(char *namaFile, DB *database) {
   } while (scanResult != EOF || scanResult > 3);
   database->qty = i;
   createTreeFromDB(&database->binaryTree, database->db, database->qty, 0);
-  // if (!isSorted(database->db, database->qty)) {
-  // sortDB(database->db, database->qty);
-  // writeDB(namaFile, database->db, database->qty);
-  // }
+
   fclose(fp);
 }

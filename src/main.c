@@ -27,40 +27,51 @@ DB _MERCH = {
 
 DB _VOD = {.db =
                {
-                   {222, "Radit", 100000, "17-09-2018"},
-                   {253, "Github", 100000, "03-05-2020"},
-                   {298, "Avengers", 100000, "09-08-2019"},
-                   {212, "Ben & ed", 100000, "12-25-2020"},
-                   {256, "Patungan", 100000, "10-05-2020"},
-                   {202, "Spiderman", 100000, "22-05-2012"},
-                   {271, "Captain America", 100000, "31-05-2019"},
-                   {281, "Hulk", 100000, "04-04-2020"},
-                   {221, "Mickey Mouse", 100000, "30-05-2019"},
-                   {234, "Ironman", 100000, "30-03-2010"},
-                   {251, "Batman", 100000, "11-08-2018"},
-                   {274, "Superman", 100000, "16-07-2017"},
-                   {282, "Wonder Woman", 100000, "20-01-2015"},
-                   {222, "Panji", 100000, "01-01-2022"},
-                   {222, "Deddy Corbuzier", 100000, "17-02-2013"},
-                   //  {222, "Radit", 100000, "21-03-2011"},
-                   //  {222, "Radit", 100000, "05-05-2020"},
-                   //  {222, "Radit", 100000, "11-11-2011"},
-                   //  {222, "Radit", 100000, "17-09-2018"},
-                   //  {222, "Radit", 100000, "17-09-2018"},
+                   {222, "Triple Trouble", 499000, "17-09-2018"},
+                   {253, "Github", 135000, "03-05-2020"},
+                   {298, "Re-Write", 150000, "09-08-2019"},
+                   {212, "Konser Tulus 2020", 140000, "12-25-2020"},
+                   {256, "Patungan", 90000, "10-05-2020"},
+                   {202, "Close The Door", 145000, "22-05-2012"},
+                   {271, "Summer Sonic", 75000, "31-05-2019"},
+                   {281, "Fuji Rock Festival", 85000, "04-04-2020"},
+                   {221, "Free Code Camp", 90000, "30-05-2019"},
+                   {234, "Justin Bieber Justice Rour", 125000, "30-03-2010"},
+                   {251, "Djakarta Warehouse Project", 135000, "11-08-2018"},
+                   {274, "Hammersonic Festival", 145000, "16-07-2017"},
+                   {282, "Jazz Gunung Bromo 2015", 115000, "20-01-2015"},
+                   {254, "Gue Buta Bukan Bego", 110000, "01-01-2022"},
+                   {233, "Dar Der Dor!", 100000, "17-02-2013"},
+                   {278, "Pandemi VS Komedi", 100000, "21-03-2011"},
+                   {292, "Wedding Proposal", 150000, "05-05-2020"},
+                   {200, "Live Konser Fariz RM", 100000, "11-11-2011"},
+                   {299, "Live Konser Ari Lasso", 100000, "21-12-2017"},
+                   {282, "Stand Up Comedy Pandji", 100000, "01-10-2016"},
                },
            .qty = 20};
 
-DB _TIKET = {.db = {{345, "Valorant Coaching", 250000, "20-05-2023"},
-                    {358, "Ilucinati", 350000, "23-08-2022"},
-                    {336, "Hip!", 150000, "04-07-2022"},
-                    {380, "Ternyata Ini Sebabnya", 350000, "04-11-2022"},
-                    {386, "Cerita Cintaku", 350000, "26-07-2022"},
-                    {343, "Juru Bicara", 250000, "15-12-2022"},
-                    {387, "Ayah Ikhlas Volume 2", 150000, "25-06-2022"},
-                    {376, "Personal Branding", 125000, "10-10-2022"},
-                    {334, "Bhinneka Tungal Tawa", 200000, "17-08-2022"},
-                    {399, "Patraiarki", 150000, "30-10-2022"}},
-             .qty = 10};
+DB _TIKET = {
+    .db = {{345, "Valorant Coaching", 250000, "20-05-2023"},
+           {358, "Ilucinati", 350000, "23-08-2022"},
+           {336, "Hip!", 150000, "04-07-2022"},
+           {380, "Ternyata Ini Sebabnya", 350000, "04-11-2022"},
+           {386, "Cerita Cintaku", 350000, "26-07-2022"},
+           {343, "Juru Bicara", 250000, "15-12-2022"},
+           {387, "Ayah Ikhlas Volume 2", 150000, "25-06-2022"},
+           {376, "Personal Branding", 125000, "10-10-2022"},
+           {311, "Bhinneka Tunggal Tawa", 200000, "17-08-2022"},
+           {334, "Java Jazz 2022", 200000, "17-08-2022"},
+           {308, "Konser Tulus 2022", 200000, "17-08-2022"},
+           {333, "Java Jazz Festival", 575000, "29-05-2022"},
+           {367, "Rossa 25 Shining Years Concert", 350000, "27-05-2022"},
+           {346, "Prambanan Jazz Festival (PJF)", 650000, "02-07-2022"},
+           {385, "Louis Tomlinson", 550000, "10-07-2022"},
+           {324, "Jazz Gunung Bromo 2022", 400000, "23-08-2022"},
+           {301, "Soundrenaline", 250000, "10-10-2022"},
+           {302, "Synchronize Fest", 150000, "09-08-2022"},
+           {399, "Patraiarki", 150000, "30-10-2022"},
+           {323, "Theater: JKT48 2023", 450000, "04-01-2023"}},
+    .qty = 20};
 
 void init() {
   initDir();
@@ -82,7 +93,7 @@ int mainMenu() {
          "|0. Keluar                       |\n"
          "+================================+\n"
          "Pilihan: ");
-  scanf("%d", &pilih);
+  scanf("%d%*c", &pilih);
   printf("\n");
   return pilih;
 }
@@ -119,7 +130,8 @@ int main() {
       merch();
       break;
     case 4:
-      printUser();
+      // cls();
+      // printUser();
       printCart(&_USERDATA);
       break;
     case 5:
