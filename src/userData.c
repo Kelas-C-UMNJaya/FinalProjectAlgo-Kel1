@@ -28,7 +28,6 @@ void initCart(UserData *user) {
 }
 
 void printUser() {
-  cls();
   printf("+================================+\n");
   printf("|Halo, %-25s |\n", _USERDATA.nama);
   printf("|Saldo     : %-19lu |\n", _USERDATA.saldo);
@@ -197,6 +196,13 @@ void printCart(UserData *user) {
 
     switch (pilihan) {
     case 1:
+      if (user->cartSize == 0) {
+        printf("\n");
+        printf("Cart kosong, membatalkan pembayaran...");
+        prompt();
+        cls();
+        break;
+      }
       bayar(&_USERDATA, &total);
       break;
     case 2:
@@ -219,10 +225,55 @@ void topup() {
   unsigned long topUp;
   scanf("%lu%*c", &topUp);
   _USERDATA.saldo += topUp;
+  writeUserFile(_USERDATA);
 }
 unsigned long dedup(unsigned long saldo) {
   _USERDATA.saldo -= saldo;
+  writeUserFile(_USERDATA);
   return _USERDATA.saldo;
+}
+
+void menuGantiData() {
+  int menu;
+  while (1) {
+  printUser();
+    puts("+=======================+");
+    puts("|  Ganti Data Pengguna  |");
+    puts("+=======================+");
+    puts("|1. Ganti Nama          |");
+    puts("|2. Top up Saldo        |");
+    puts("|0. Kembali             |");
+    puts("+=======================+");
+    printf("Pilihan: ");
+    scanf("%d%*c", &menu);
+
+    switch (menu) {
+    case 1:
+      changeUserName();
+      break;
+    case 2:
+      topup();
+      break;
+    case 0:
+      return;
+      break;
+    default:
+      puts("Pilihan tidak valid");
+      break;
+    }
+  }
+}
+
+void changeUserName() {
+  printf("\nMasukkan nama baru: ");
+  char namaBaru[100];
+  scanf("%[^\n]%*c", namaBaru);
+  strcpy(_USERDATA.nama, namaBaru);
+  writeUserFile(_USERDATA);
+  printf("Nama berhasil diganti!\n");
+  prompt();
+  cls();
+  return;
 }
 
 void readUserFile() {

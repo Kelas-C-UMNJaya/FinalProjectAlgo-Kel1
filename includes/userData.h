@@ -19,4 +19,6 @@ void writeUserCart(UserData user);
 void clearCart(UserData *user);
 void printNota(UserData *user);
 void writeNota(UserData *user);
+void menuGantiData();
+void changeUserName();
 #endif

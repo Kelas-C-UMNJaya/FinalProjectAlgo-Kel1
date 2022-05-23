@@ -57,7 +57,6 @@ void init() {
 
 int mainMenu() {
   int pilih;
-  cls();
   printf("+================================+\n");
   printf("|            Main Menu           |\n");
   printf("+================================+\n");
@@ -65,6 +64,7 @@ int mainMenu() {
          "|2. Beli Digital Download        |\n"
          "|3. Beli Merch                   |\n"
          "|4. Tampilkan Shopping Cart      |\n"
+         "|5. Ubah Data User               |\n"
          "|0. Keluar                       |\n"
          "+================================+\n"
          "Pilihan: ");
@@ -73,13 +73,26 @@ int mainMenu() {
   return pilih;
 }
 
+void splashScreen() {
+  puts("+===============================================================+");
+  puts("|        @@@@@ j@@    ,gg,    ]@@   g@@` @@@@@@P $@@@@P         |");
+  puts("|        --]@@ ]@@ g$'    *$g ]@@ g@@'   @@[---  ]@@--          |");
+  puts("|          ]@@ ]@@ $  g$$g@$$ ]@@@@P     @@@@@@  ]@@            |");
+  puts("|          ]@@ ]@@ lg '**''$$ ]@@'@@@    @@['''  ]@@            |");
+  puts("|          ]@@ ]@@  '%ggggP'  ]@@  *@@@  @@@BBBP ]@@            |");
+  puts("+===============================================================+");
+  printf("\n");
+}
+
 int main() {
+  cls();
   init();
   bool keepGoing = true;
   readUserFile();
   cls();
 
   while (keepGoing) {
+    splashScreen();
     printUser();
     switch (mainMenu()) {
     case 1:
@@ -95,11 +108,15 @@ int main() {
       printUser();
       printCart(&_USERDATA);
       break;
+    case 5:
+      menuGantiData();
+      break;
     case 0:
       keepGoing = false;
       break;
     case 69:
       aboutUs();
+      break;
     default:
       printf("Pilihan Tidak Valid\n");
       prompt();

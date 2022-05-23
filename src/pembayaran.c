@@ -72,6 +72,7 @@ void bayar(UserData *user, unsigned long *total) {
   printNota(&_USERDATA);
   writeNota(&_USERDATA);
   clearCart(user);
+  writeUserCart(*user);
   prompt();
 
   printf("\n");
